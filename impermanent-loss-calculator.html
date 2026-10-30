@@ -27,6 +27,12 @@
     }
   }
   </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is impermanent loss?","acceptedAnswer":{"@type":"Answer","text":"Impermanent loss is the value difference between holding tokens in a liquidity pool versus holding them in your wallet. It occurs when pooled token prices diverge after deposit."}},
+{"@type":"Question","name":"How is impermanent loss calculated?","acceptedAnswer":{"@type":"Answer","text":"IL% = 2*sqrt(price_ratio)/(1+price_ratio) - 1. A 2x price move causes ~5.7% IL; a 4x move causes ~20% IL."}},
+{"@type":"Question","name":"Can fees offset impermanent loss?","acceptedAnswer":{"@type":"Answer","text":"Yes. High-volume pools with 0.3% fees can offset IL if the fee APR exceeds your annualized impermanent loss. Model this with the calculator above."}},
+{"@type":"Question","name":"Does impermanent loss apply to stablecoin pools?","acceptedAnswer":{"@type":"Answer","text":"Stablecoin pairs (USDC/USDT) have near-zero IL because the price ratio stays ~1:1. They earn lower fees but carry minimal divergence risk."}}]}
+</script>
 </head>
 <body>
   <header>
@@ -108,7 +114,38 @@
     <div class="ad-placeholder-text">🔒 Recommended Hardware Wallet &amp; Low-Fee Crypto Exchanges</div>
     <!-- ADSENSE CONTENT UNIT -->
   </div>
-  </main>
+  
+<section style="background:var(--card-bg);border-radius:12px;padding:1.5rem;margin:2rem 1rem;max-width:800px;margin-left:auto;margin-right:auto">
+  <h2 style="font-size:1.2rem;margin-bottom:1rem">&#128279; Related Calculators &amp; Guides</h2>
+  <ul style="padding-left:1.2rem;line-height:2.2;margin:0 0 1.5rem">
+      <li><a href="staking-yield-calculator.html">Staking Yield Calculator</a></li>
+      <li><a href="crypto-profit-calculator.html">Crypto Profit Calculator</a></li>
+      <li><a href="content/what-is-impermanent-loss-uniswap-explained.html">Guide: Impermanent Loss Explained</a></li>
+  </ul>
+  <h2 style="font-size:1.2rem;margin-bottom:1rem">&#10067; Frequently Asked Questions</h2>
+  <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">What is impermanent loss? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Impermanent loss is the value difference between holding tokens in a liquidity pool versus holding them in your wallet. It occurs when pooled token prices diverge after deposit.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">How is impermanent loss calculated? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">IL% = 2*sqrt(price_ratio)/(1+price_ratio) - 1. A 2x price move causes ~5.7% IL; a 4x move causes ~20% IL.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">Can fees offset impermanent loss? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Yes. High-volume pools with 0.3% fees can offset IL if the fee APR exceeds your annualized impermanent loss. Model this with the calculator above.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">Does impermanent loss apply to stablecoin pools? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Stablecoin pairs (USDC/USDT) have near-zero IL because the price ratio stays ~1:1. They earn lower fees but carry minimal divergence risk.</div>
+      </div>
+  </div>
+  <div style="margin-top:1.5rem;text-align:center">
+    <a href="content/what-is-impermanent-loss-uniswap-explained.html" style="display:inline-block;padding:.6rem 1.5rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600">&#128218; Read: What Is Impermanent Loss? Complete Guide</a>
+  </div>
+</section>
+</main>
   <footer>
     <div class="footer-content">
       <div class="footer-brand">
@@ -184,5 +221,13 @@
     }
     document.addEventListener('DOMContentLoaded', calcIL);
   </script>
+<script>
+document.querySelectorAll('.faq-question').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var ans=this.nextElementSibling;
+    ans.style.display=ans.style.display==='block'?'none':'block';
+  });
+});
+</script>
 </body>
 </html>

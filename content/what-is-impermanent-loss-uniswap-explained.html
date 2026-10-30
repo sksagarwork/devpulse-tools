@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Impermanent Loss? Uniswap & DeFi Explained (2024) | CryptoCalc Pro</title>
+<meta name="description" content="Impermanent loss explained step-by-step for Uniswap V2/V3 and DeFi liquidity providers. Learn the formula, real examples, and how to minimize it.">
+<meta name="keywords" content="impermanent loss, impermanent loss uniswap, impermanent loss calculator, what is impermanent loss defi, impermanent loss explained">
+<meta property="og:title" content="What Is Impermanent Loss? Uniswap & DeFi Explained (2024)">
+<meta property="og:description" content="Impermanent loss explained step-by-step for Uniswap V2/V3 and DeFi liquidity providers. Learn the formula, real examples, and how to minimize it.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://sksagarwork.github.io/devpulse-tools/content/what-is-impermanent-loss-uniswap-explained.html">
+<link rel="stylesheet" href="../css/style.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Article",
+      "headline":"What Is Impermanent Loss? Uniswap & DeFi Explained (2024)",
+      "description":"Impermanent loss explained step-by-step for Uniswap V2/V3 and DeFi liquidity providers. Learn the formula, real examples, and how to minimize it.",
+      "author":{"@type":"Organization","name":"CryptoCalc Pro"},
+      "publisher":{"@type":"Organization","name":"CryptoCalc Pro","url":"https://sksagarwork.github.io/devpulse-tools/"},
+      "mainEntityOfPage":{"@type":"WebPage","@id":"https://sksagarwork.github.io/devpulse-tools/content/what-is-impermanent-loss-uniswap-explained.html"}
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://sksagarwork.github.io/devpulse-tools/"},
+        {"@type":"ListItem","position":2,"name":"Blog","item":"https://sksagarwork.github.io/devpulse-tools/content/"},
+        {"@type":"ListItem","position":3,"name":"What Is Impermanent Loss? Uniswap & DeFi Explained (2024)","item":"https://sksagarwork.github.io/devpulse-tools/content/what-is-impermanent-loss-uniswap-explained.html"}
+      ]
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[{{"@type":"Question","name":'What is impermanent loss in DeFi?',"acceptedAnswer":{"@type":"Answer","text":'Impermanent loss is the difference in value between holding tokens in a liquidity pool versus simply holding them in your wallet. It occurs when the price ratio of pooled assets changes after deposit.'}},
+{{"@type":"Question","name":'Is impermanent loss permanent?',"acceptedAnswer":{"@type":"Answer","text":'No — the loss becomes permanent only when you withdraw your liquidity. If prices return to their original ratio, the loss disappears entirely.'}},
+{{"@type":"Question","name":'How do I calculate impermanent loss?',"acceptedAnswer":{"@type":"Answer","text":'Use the formula: IL% = 2*sqrt(price_ratio)/(1+price_ratio) - 1. A 2x price move results in approximately 5.7% impermanent loss relative to simply holding.'}},
+{{"@type":"Question","name":'Does impermanent loss apply to Uniswap V3?',"acceptedAnswer":{"@type":"Answer","text":'Yes, but the dynamics differ because V3 uses concentrated liquidity. Your IL is amplified within your chosen price range but limited to that range.'}},
+{{"@type":"Question","name":'Which pools have the least impermanent loss?',"acceptedAnswer":{"@type":"Answer","text":'Stablecoin pools (e.g., USDC/USDT) have near-zero impermanent loss because the price ratio stays close to 1:1. Correlated pairs like ETH/stETH also minimize it.'}}]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../" class="logo">&#9775; CryptoCalc Pro</a>
+    <nav>
+      <a href="../">Tools</a>
+      <a href="./">Blog</a>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">&#9728;</button>
+  </div>
+</header>
+<main class="container" style="max-width:860px;padding-top:2rem;padding-bottom:3rem">
+  <article>
+    <header style="margin-bottom:2rem">
+      <nav aria-label="breadcrumb" style="font-size:.85rem;color:var(--text-muted);margin-bottom:.75rem">
+        <a href="../">Home</a> &rsaquo; <a href="./">Blog</a> &rsaquo; What Is Impermanent Loss? Uniswap & DeFi Explained (2024)
+      </nav>
+      <h1 style="font-size:2rem;line-height:1.3;margin:0 0 .75rem">What Is Impermanent Loss? A Complete Guide for Uniswap LP Providers</h1>
+      <p style="color:var(--text-muted);font-size:.9rem">By CryptoCalc Pro &bull; Updated October 2024 &bull; 8 min read</p>
+    </header>
+    <div class="article-body" style="line-height:1.8;font-size:1.05rem">
+      <p>Providing liquidity to automated market makers (AMMs) like Uniswap, SushiSwap, or PancakeSwap can be lucrative — but it comes with a hidden risk called <strong>impermanent loss</strong>. This guide explains what it is, how to calculate it, and how to decide whether liquidity provision still makes sense for your portfolio.</p>
+
+      <h2>The Core Concept: Why Prices Diverge</h2>
+      <p>When you add liquidity to a pool, you deposit two tokens in equal USD value. The AMM uses the constant product formula <code>x &times; y = k</code> to price your assets automatically. As market prices shift, arbitrage traders rebalance the pool — and in doing so, they gradually replace your more valuable token with the less valuable one.</p>
+
+      <h2>The Impermanent Loss Formula</h2>
+      <p>The exact percentage loss can be calculated with:</p>
+      <pre style="background:var(--card-bg);padding:1rem;border-radius:8px;overflow-x:auto"><code>IL% = (2 &times; &radic;r) / (1 + r)  &minus;  1
+
+where r = new_price / initial_price</code></pre>
+      <p>Real-world examples at common price movements:</p>
+      <table style="width:100%;border-collapse:collapse;margin:1rem 0">
+        <thead><tr style="background:var(--card-bg)"><th style="padding:.6rem;text-align:left">Price Change</th><th style="padding:.6rem">Impermanent Loss</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:.6rem">+25%</td><td style="padding:.6rem;text-align:center">0.6%</td></tr>
+          <tr style="background:var(--card-bg)"><td style="padding:.6rem">+50%</td><td style="padding:.6rem;text-align:center">2.0%</td></tr>
+          <tr><td style="padding:.6rem">+100% (2x)</td><td style="padding:.6rem;text-align:center">5.7%</td></tr>
+          <tr style="background:var(--card-bg)"><td style="padding:.6rem">+300% (4x)</td><td style="padding:.6rem;text-align:center">20.0%</td></tr>
+          <tr><td style="padding:.6rem">+900% (10x)</td><td style="padding:.6rem;text-align:center">42.5%</td></tr>
+        </tbody>
+      </table>
+
+      <h2>When Do Fees Offset Impermanent Loss?</h2>
+      <p>High-volume pools generate trading fees (0.05%–1% per swap). If your fee APR exceeds the annualized impermanent loss, you still profit. A good rule of thumb: ETH/USDC on Uniswap V3 at 0.3% fee tier typically offsets IL for price moves up to ~2x given sufficient volume. Use the calculator below to model your specific scenario.</p>
+
+      <h2>Strategies to Minimize Impermanent Loss</h2>
+      <ul>
+        <li><strong>Stablecoin pairs</strong> — USDC/USDT pools have near-zero IL. Yields are lower but risk-free relative to price divergence.</li>
+        <li><strong>Correlated asset pairs</strong> — ETH/stETH, BTC/WBTC, or liquid staking pairs move together, reducing divergence risk.</li>
+        <li><strong>Narrow range in V3</strong> — Concentrated liquidity earns more fees per dollar deployed, potentially offsetting higher IL risk.</li>
+        <li><strong>Delta-neutral hedging</strong> — Short the more volatile asset on a perpetuals exchange while providing LP to offset price exposure.</li>
+      </ul>
+    </div>
+    <div class="cta-box" style="background:var(--card-bg);border:2px solid var(--accent);border-radius:12px;padding:1.5rem;margin:2rem 0;text-align:center">
+      <p style="font-size:1.1rem;font-weight:600;margin:0 0 .75rem">Ready to calculate? Use our free tool:</p>
+      <a href="../impermanent-loss-calculator.html" class="btn-primary" style="display:inline-block;padding:.75rem 2rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:700;font-size:1.05rem">&#8594; Impermanent Loss Calculator</a>
+    </div>
+    <section style="margin-top:2.5rem">
+      <h2 style="font-size:1.4rem;margin-bottom:1rem">Frequently Asked Questions</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-question">What is impermanent loss in DeFi?</button>
+          <div class="faq-answer"><p>Impermanent loss is the difference in value between holding tokens in a liquidity pool versus simply holding them in your wallet. It occurs when the price ratio of pooled assets changes after deposit.</p></div>
+        </div>        <div class="faq-item">
+          <button class="faq-question">Is impermanent loss permanent?</button>
+          <div class="faq-answer"><p>No — the loss becomes permanent only when you withdraw your liquidity. If prices return to their original ratio, the loss disappears entirely.</p></div>
+        </div>        <div class="faq-item">
+          <button class="faq-question">How do I calculate impermanent loss?</button>
+          <div class="faq-answer"><p>Use the formula: IL% = 2*sqrt(price_ratio)/(1+price_ratio) - 1. A 2x price move results in approximately 5.7% impermanent loss relative to simply holding.</p></div>
+        </div>        <div class="faq-item">
+          <button class="faq-question">Does impermanent loss apply to Uniswap V3?</button>
+          <div class="faq-answer"><p>Yes, but the dynamics differ because V3 uses concentrated liquidity. Your IL is amplified within your chosen price range but limited to that range.</p></div>
+        </div>        <div class="faq-item">
+          <button class="faq-question">Which pools have the least impermanent loss?</button>
+          <div class="faq-answer"><p>Stablecoin pools (e.g., USDC/USDT) have near-zero impermanent loss because the price ratio stays close to 1:1. Correlated pairs like ETH/stETH also minimize it.</p></div>
+        </div>
+      </div>
+    </section>
+    <section style="margin-top:2.5rem">
+      <h2 style="font-size:1.2rem;margin-bottom:.75rem">Related Calculators</h2>
+      <ul style="padding-left:1.2rem;line-height:2">
+        <li><a href="../impermanent-loss-calculator.html">Impermanent Loss Calculator</a></li>
+<li><a href="../staking-yield-calculator.html">Staking Yield Calculator</a></li>
+<li><a href="../crypto-profit-calculator.html">Crypto Profit Calculator</a></li>
+      </ul>
+    </section>
+  </article>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2024 CryptoCalc Pro &bull; <a href="../">All Tools</a> &bull; <a href="./">Blog</a></p>
+  </div>
+</footer>
+<script src="../js/common.js"></script>
+</body>
+</html>

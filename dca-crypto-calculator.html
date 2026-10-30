@@ -27,6 +27,12 @@
     }
   }
   </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is dollar-cost averaging (DCA) in crypto?","acceptedAnswer":{"@type":"Answer","text":"DCA means investing a fixed amount at regular intervals regardless of price. It reduces the impact of volatility and removes the need to time the market."}},
+{"@type":"Question","name":"Is DCA better than lump sum for Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"Lump sum outperforms DCA ~65% of the time in bull markets. DCA significantly outperforms in ranging or declining markets and reduces maximum drawdown."}},
+{"@type":"Question","name":"What is the best interval for crypto DCA?","acceptedAnswer":{"@type":"Answer","text":"Weekly DCA generally outperforms monthly in volatile markets as it captures more price variation. Daily DCA captures even more but fees can erode returns for small amounts."}},
+{"@type":"Question","name":"How do I calculate my DCA average cost?","acceptedAnswer":{"@type":"Answer","text":"Average cost = Total invested / Total units acquired. Total units = sum of (Investment per period / Price per period) across all intervals."}}]}
+</script>
 </head>
 <body>
   <header>
@@ -107,7 +113,38 @@
     <div class="ad-placeholder-text">🔒 Recommended Hardware Wallet &amp; Low-Fee Crypto Exchanges</div>
     <!-- ADSENSE CONTENT UNIT -->
   </div>
-  </main>
+  
+<section style="background:var(--card-bg);border-radius:12px;padding:1.5rem;margin:2rem 1rem;max-width:800px;margin-left:auto;margin-right:auto">
+  <h2 style="font-size:1.2rem;margin-bottom:1rem">&#128279; Related Calculators &amp; Guides</h2>
+  <ul style="padding-left:1.2rem;line-height:2.2;margin:0 0 1.5rem">
+      <li><a href="crypto-profit-calculator.html">Crypto Profit Calculator</a></li>
+      <li><a href="staking-yield-calculator.html">Staking Yield Calculator</a></li>
+      <li><a href="content/dca-bitcoin-strategy-vs-lump-sum-investing.html">Guide: DCA vs Lump Sum Strategy</a></li>
+  </ul>
+  <h2 style="font-size:1.2rem;margin-bottom:1rem">&#10067; Frequently Asked Questions</h2>
+  <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">What is dollar-cost averaging (DCA) in crypto? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">DCA means investing a fixed amount at regular intervals regardless of price. It reduces the impact of volatility and removes the need to time the market.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">Is DCA better than lump sum for Bitcoin? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Lump sum outperforms DCA ~65% of the time in bull markets. DCA significantly outperforms in ranging or declining markets and reduces maximum drawdown.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">What is the best interval for crypto DCA? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Weekly DCA generally outperforms monthly in volatile markets as it captures more price variation. Daily DCA captures even more but fees can erode returns for small amounts.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">How do I calculate my DCA average cost? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Average cost = Total invested / Total units acquired. Total units = sum of (Investment per period / Price per period) across all intervals.</div>
+      </div>
+  </div>
+  <div style="margin-top:1.5rem;text-align:center">
+    <a href="content/dca-bitcoin-strategy-vs-lump-sum-investing.html" style="display:inline-block;padding:.6rem 1.5rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600">&#128218; Read: DCA Bitcoin vs Lump Sum — Data-Backed Guide</a>
+  </div>
+</section>
+</main>
   <footer>
     <div class="footer-content">
       <div class="footer-brand">
@@ -172,5 +209,13 @@
     }
     document.addEventListener('DOMContentLoaded', calcDCA);
   </script>
+<script>
+document.querySelectorAll('.faq-question').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var ans=this.nextElementSibling;
+    ans.style.display=ans.style.display==='block'?'none':'block';
+  });
+});
+</script>
 </body>
 </html>

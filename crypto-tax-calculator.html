@@ -27,6 +27,12 @@
     }
   }
   </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is crypto taxed as capital gains?","acceptedAnswer":{"@type":"Answer","text":"Yes — in the US, UK, and Australia, crypto is treated as a capital asset. All disposals (sales, swaps, payments) trigger capital gains tax."}},
+{"@type":"Question","name":"What is the short-term crypto tax rate in the US?","acceptedAnswer":{"@type":"Answer","text":"Short-term gains (held under 1 year) are taxed as ordinary income at 10%–37%. Long-term gains qualify for 0%, 15%, or 20% depending on income."}},
+{"@type":"Question","name":"Do I owe tax swapping crypto for crypto?","acceptedAnswer":{"@type":"Answer","text":"Yes. In the US, UK, and Australia, crypto-to-crypto swaps are taxable disposals at the fair market value at the time of the swap."}},
+{"@type":"Question","name":"How does the UK's Section 104 pool work?","acceptedAnswer":{"@type":"Answer","text":"HMRC requires you to average the cost of all units of a coin — not FIFO or LIFO. Your cost basis for any sale is the pool's average cost per unit."}}]}
+</script>
 </head>
 <body>
   <header>
@@ -110,7 +116,38 @@
     <div class="ad-placeholder-text">🔒 Recommended Hardware Wallet &amp; Low-Fee Crypto Exchanges</div>
     <!-- ADSENSE CONTENT UNIT -->
   </div>
-  </main>
+  
+<section style="background:var(--card-bg);border-radius:12px;padding:1.5rem;margin:2rem 1rem;max-width:800px;margin-left:auto;margin-right:auto">
+  <h2 style="font-size:1.2rem;margin-bottom:1rem">&#128279; Related Calculators &amp; Guides</h2>
+  <ul style="padding-left:1.2rem;line-height:2.2;margin:0 0 1.5rem">
+      <li><a href="crypto-profit-calculator.html">Crypto Profit Calculator</a></li>
+      <li><a href="dca-crypto-calculator.html">DCA Bitcoin Calculator</a></li>
+      <li><a href="content/how-to-calculate-crypto-tax-us-uk-australia.html">Guide: Crypto Tax US/UK/Australia</a></li>
+  </ul>
+  <h2 style="font-size:1.2rem;margin-bottom:1rem">&#10067; Frequently Asked Questions</h2>
+  <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">Is crypto taxed as capital gains? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Yes — in the US, UK, and Australia, crypto is treated as a capital asset. All disposals (sales, swaps, payments) trigger capital gains tax.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">What is the short-term crypto tax rate in the US? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Short-term gains (held under 1 year) are taxed as ordinary income at 10%–37%. Long-term gains qualify for 0%, 15%, or 20% depending on income.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">Do I owe tax swapping crypto for crypto? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Yes. In the US, UK, and Australia, crypto-to-crypto swaps are taxable disposals at the fair market value at the time of the swap.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">How does the UK's Section 104 pool work? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">HMRC requires you to average the cost of all units of a coin — not FIFO or LIFO. Your cost basis for any sale is the pool's average cost per unit.</div>
+      </div>
+  </div>
+  <div style="margin-top:1.5rem;text-align:center">
+    <a href="content/how-to-calculate-crypto-tax-us-uk-australia.html" style="display:inline-block;padding:.6rem 1.5rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600">&#128218; Read: Crypto Tax Guide — US, UK & Australia</a>
+  </div>
+</section>
+</main>
   <footer>
     <div class="footer-content">
       <div class="footer-brand">
@@ -172,5 +209,13 @@
     }
     document.addEventListener('DOMContentLoaded', calcTax);
   </script>
+<script>
+document.querySelectorAll('.faq-question').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var ans=this.nextElementSibling;
+    ans.style.display=ans.style.display==='block'?'none':'block';
+  });
+});
+</script>
 </body>
 </html>

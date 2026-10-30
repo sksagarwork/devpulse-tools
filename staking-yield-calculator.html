@@ -27,6 +27,12 @@
     }
   }
   </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What APY does Ethereum staking offer?","acceptedAnswer":{"@type":"Answer","text":"Native ETH staking currently yields approximately 3.5%–4.5% APY. Liquid staking protocols like Lido offer similar rates with automatic daily compounding."}},
+{"@type":"Question","name":"What is the difference between APR and APY?","acceptedAnswer":{"@type":"Answer","text":"APR is the simple interest rate before compounding. APY accounts for reinvestment of rewards. At 5% APR with daily compounding, APY is ~5.13%."}},
+{"@type":"Question","name":"How does compounding frequency affect staking returns?","acceptedAnswer":{"@type":"Answer","text":"More frequent compounding slightly increases final returns. Daily compounding at 5% APR yields 5.127% APY vs 5.0% for annual compounding."}},
+{"@type":"Question","name":"Are staking rewards taxed?","acceptedAnswer":{"@type":"Answer","text":"In the US, staking rewards are ordinary income at receipt. In the UK and Australia, tax treatment varies — consult a crypto tax advisor for your jurisdiction."}}]}
+</script>
 </head>
 <body>
   <header>
@@ -108,7 +114,38 @@
     <div class="ad-placeholder-text">🔒 Recommended Hardware Wallet &amp; Low-Fee Crypto Exchanges</div>
     <!-- ADSENSE CONTENT UNIT -->
   </div>
-  </main>
+  
+<section style="background:var(--card-bg);border-radius:12px;padding:1.5rem;margin:2rem 1rem;max-width:800px;margin-left:auto;margin-right:auto">
+  <h2 style="font-size:1.2rem;margin-bottom:1rem">&#128279; Related Calculators &amp; Guides</h2>
+  <ul style="padding-left:1.2rem;line-height:2.2;margin:0 0 1.5rem">
+      <li><a href="impermanent-loss-calculator.html">Impermanent Loss Calculator</a></li>
+      <li><a href="dca-crypto-calculator.html">DCA Calculator</a></li>
+      <li><a href="content/ethereum-staking-compound-interest-calculator-explained.html">Guide: ETH Staking Compound Interest</a></li>
+  </ul>
+  <h2 style="font-size:1.2rem;margin-bottom:1rem">&#10067; Frequently Asked Questions</h2>
+  <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">What APY does Ethereum staking offer? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Native ETH staking currently yields approximately 3.5%–4.5% APY. Liquid staking protocols like Lido offer similar rates with automatic daily compounding.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">What is the difference between APR and APY? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">APR is the simple interest rate before compounding. APY accounts for reinvestment of rewards. At 5% APR with daily compounding, APY is ~5.13%.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">How does compounding frequency affect staking returns? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">More frequent compounding slightly increases final returns. Daily compounding at 5% APR yields 5.127% APY vs 5.0% for annual compounding.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">Are staking rewards taxed? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">In the US, staking rewards are ordinary income at receipt. In the UK and Australia, tax treatment varies — consult a crypto tax advisor for your jurisdiction.</div>
+      </div>
+  </div>
+  <div style="margin-top:1.5rem;text-align:center">
+    <a href="content/ethereum-staking-compound-interest-calculator-explained.html" style="display:inline-block;padding:.6rem 1.5rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600">&#128218; Read: ETH Staking APY & Compound Interest Guide</a>
+  </div>
+</section>
+</main>
   <footer>
     <div class="footer-content">
       <div class="footer-brand">
@@ -166,5 +203,13 @@
     }
     document.addEventListener('DOMContentLoaded', calcStaking);
   </script>
+<script>
+document.querySelectorAll('.faq-question').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var ans=this.nextElementSibling;
+    ans.style.display=ans.style.display==='block'?'none':'block';
+  });
+});
+</script>
 </body>
 </html>

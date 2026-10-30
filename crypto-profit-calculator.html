@@ -27,6 +27,12 @@
     }
   }
   </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate crypto trading profit?","acceptedAnswer":{"@type":"Answer","text":"Net Profit = (Sell Price − Buy Price) × Quantity − Entry Fee − Exit Fee. Always subtract both fees from gross profit to get true net profit."}},
+{"@type":"Question","name":"What is ROI in crypto trading?","acceptedAnswer":{"@type":"Answer","text":"ROI% = (Net Profit / Amount Invested) × 100. A 50% ROI on a $1,000 investment means $500 net profit."}},
+{"@type":"Question","name":"How do Binance fees affect my profits?","acceptedAnswer":{"@type":"Answer","text":"Binance charges 0.1% per trade (0.075% with BNB). A $10,000 round-trip trade incurs $20 in fees — significant for small gains but modest for long-term holds."}},
+{"@type":"Question","name":"What is my break-even price after fees?","acceptedAnswer":{"@type":"Answer","text":"Break-even = Buy Price × (1 + fee_rate) / (1 − fee_rate). At 0.1% fee, a $40,000 buy breaks even at $40,080."}}]}
+</script>
 </head>
 <body>
   <header>
@@ -98,7 +104,38 @@
     <div class="ad-placeholder-text">🔒 Recommended Hardware Wallet &amp; Low-Fee Crypto Exchanges</div>
     <!-- ADSENSE CONTENT UNIT -->
   </div>
-  </main>
+  
+<section style="background:var(--card-bg);border-radius:12px;padding:1.5rem;margin:2rem 1rem;max-width:800px;margin-left:auto;margin-right:auto">
+  <h2 style="font-size:1.2rem;margin-bottom:1rem">&#128279; Related Calculators &amp; Guides</h2>
+  <ul style="padding-left:1.2rem;line-height:2.2;margin:0 0 1.5rem">
+      <li><a href="crypto-tax-calculator.html">Crypto Tax Calculator</a></li>
+      <li><a href="liquidation-price-calculator.html">Liquidation Price Calculator</a></li>
+      <li><a href="content/how-to-calculate-crypto-profit-roi-with-fees.html">Guide: Crypto Profit & ROI With Fees</a></li>
+  </ul>
+  <h2 style="font-size:1.2rem;margin-bottom:1rem">&#10067; Frequently Asked Questions</h2>
+  <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">How do I calculate crypto trading profit? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Net Profit = (Sell Price − Buy Price) × Quantity − Entry Fee − Exit Fee. Always subtract both fees from gross profit to get true net profit.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">What is ROI in crypto trading? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">ROI% = (Net Profit / Amount Invested) × 100. A 50% ROI on a $1,000 investment means $500 net profit.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">How do Binance fees affect my profits? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Binance charges 0.1% per trade (0.075% with BNB). A $10,000 round-trip trade incurs $20 in fees — significant for small gains but modest for long-term holds.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">What is my break-even price after fees? <span>&#9660;</span></button>
+        <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Break-even = Buy Price × (1 + fee_rate) / (1 − fee_rate). At 0.1% fee, a $40,000 buy breaks even at $40,080.</div>
+      </div>
+  </div>
+  <div style="margin-top:1.5rem;text-align:center">
+    <a href="content/how-to-calculate-crypto-profit-roi-with-fees.html" style="display:inline-block;padding:.6rem 1.5rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600">&#128218; Read: How to Calculate Crypto Profit With Fees</a>
+  </div>
+</section>
+</main>
   <footer>
     <div class="footer-content">
       <div class="footer-brand">
@@ -161,5 +198,13 @@
     }
     document.addEventListener('DOMContentLoaded', calcProfit);
   </script>
+<script>
+document.querySelectorAll('.faq-question').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var ans=this.nextElementSibling;
+    ans.style.display=ans.style.display==='block'?'none':'block';
+  });
+});
+</script>
 </body>
 </html>

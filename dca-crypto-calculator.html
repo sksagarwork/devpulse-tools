@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto DCA Calculator – Dollar Cost Averaging Profit Simulation</title>
+  <meta name="description" content="Simulate dollar-cost averaging (DCA) strategies on Bitcoin and crypto. Calculate portfolio growth, total capital invested, and net ROI." />
+  <link rel="canonical" href="https://sksagarwork.github.io/devpulse-tools/dca-crypto-calculator.html" />
+  <meta property="og:title" content="Crypto DCA Calculator – Dollar Cost Averaging Profit Simulation" />
+  <meta property="og:description" content="Simulate dollar-cost averaging (DCA) strategies on Bitcoin and crypto. Calculate portfolio growth, total capital invested, and net ROI." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sksagarwork.github.io/devpulse-tools/dca-crypto-calculator.html" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Crypto DCA Calculator",
+    "url": "https://sksagarwork.github.io/devpulse-tools/dca-crypto-calculator.html",
+    "description": "Simulate dollar-cost averaging (DCA) strategies on Bitcoin and crypto. Calculate portfolio growth, total capital invested, and net ROI.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>CryptoCalc Pro</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Calculators</a>
+        <a href="impermanent-loss-calculator.html" class="nav-link">Impermanent Loss</a>
+        <a href="crypto-tax-calculator.html" class="nav-link">Tax / PnL</a>
+        <a href="staking-yield-calculator.html" class="nav-link">Staking APY</a>
+        <a href="dca-crypto-calculator.html" class="nav-link">DCA Backtest</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+  <div class="ad-slot" id="top-banner-ad">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-placeholder-text">⚡ High-Value Web3 & Exchange Banner (Bybit / Binance / Ledger Affiliate Slot)</div>
+    <!-- ADSENSE LEADERBOARD -->
+  </div>
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">CryptoCalc Pro</a> &gt; <span>Calculators</span> &gt; <span>Crypto DCA Calculator</span>
+      </div>
+      <h1>Crypto DCA Calculator</h1>
+      <p>Simulate dollar-cost averaging (DCA) strategies on Bitcoin and crypto. Calculate portfolio growth, total capital invested, and net ROI.</p>
+    </div>
+
+    <div class="tool-box">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+        <div>
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Recurring Investment Amount ($ USD)</label>
+          <input type="number" id="dca-amt" class="input-field" style="width:100%; margin-bottom:1rem;" value="100" oninput="calcDCA()" />
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Investment Frequency</label>
+          <select id="dca-freq" class="input-field" style="width:100%; margin-bottom:1rem;" onchange="calcDCA()">
+            <option value="52" selected>Weekly (52 purchases/year)</option>
+            <option value="26">Bi-Weekly (26 purchases/year)</option>
+            <option value="12">Monthly (12 purchases/year)</option>
+          </select>
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Duration (Years)</label>
+          <input type="number" id="dca-years" class="input-field" style="width:100%; margin-bottom:1rem;" value="3" min="1" max="10" oninput="calcDCA()" />
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Expected Annual Asset Growth Rate (%)</label>
+          <input type="number" id="dca-growth" class="input-field" style="width:100%;" value="35" oninput="calcDCA()" />
+        </div>
+
+        <div>
+          <h3>DCA Strategy Simulation</h3>
+          <div class="result-card">
+            <table class="data-table">
+              <tbody>
+                <tr><th>Total Cash Invested</th><td id="res-dca-invested">$15,600.00</td></tr>
+                <tr><th>Estimated Portfolio Value</th><td id="res-dca-val" style="color:var(--success); font-size:1.2rem; font-weight:700;">$26,450.12</td></tr>
+                <tr><th>Total Profit</th><td id="res-dca-profit" style="color:var(--success); font-weight:700;">+$10,850.12</td></tr>
+                <tr><th>Return on Investment (ROI)</th><td id="res-dca-roi" style="font-weight:700;">+69.55%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="seo-section">
+      <h2>Why Dollar-Cost Averaging Beats Market Timing</h2>
+      <p>Dollar-Cost Averaging (DCA) is the most proven risk-mitigation strategy in volatile crypto markets. By purchasing fixed dollar amounts at regular intervals, investors automatically buy more units when prices dip and fewer when prices rise, eliminating emotional trading traps.</p>
+    </section>
+
+  <div class="ad-slot" id="content-banner-ad">
+    <span class="ad-label">Sponsored Partner</span>
+    <div class="ad-placeholder-text">🔒 Recommended Hardware Wallet &amp; Low-Fee Crypto Exchanges</div>
+    <!-- ADSENSE CONTENT UNIT -->
+  </div>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>CryptoCalc Pro</span>
+        </div>
+        <p>The definitive financial toolkit for DeFi liquidity providers, crypto traders, and stakers. 100% private, client-side, zero signup required.</p>
+      </div>
+      <div class="footer-column">
+        <h4>DeFi & Trading</h4>
+        <ul>
+          <li><a href="impermanent-loss-calculator.html">Impermanent Loss Calculator</a></li>
+          <li><a href="crypto-tax-calculator.html">Crypto Capital Gains Tax</a></li>
+          <li><a href="staking-yield-calculator.html">Staking APY / Compounding</a></li>
+          <li><a href="liquidation-price-calculator.html">Futures Liquidation Price</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Investment & Strategy</h4>
+        <ul>
+          <li><a href="dca-crypto-calculator.html">DCA Profit Estimator</a></li>
+          <li><a href="crypto-profit-calculator.html">Risk/Reward & ROI Calculator</a></li>
+          <li><a href="sitemap.xml">XML Sitemap</a></li>
+          <li><a href="robots.txt">Robots.txt</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Disclaimer</h4>
+        <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">CryptoCalc Pro is an educational financial modeling tool. It does not provide financial or tax advice. Always consult certified financial advisors.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 CryptoCalc Pro. All rights reserved. Free DeFi Financial Calculators.</span>
+      <span>Live Real-Time Mathematical Models • Zero Tracking</span>
+    </div>
+  </footer>
+  <div id="toast"></div>
+  <script src="js/common.js"></script>
+  <script>
+    function calcDCA() {
+      const pmt = parseFloat(document.getElementById('dca-amt').value) || 0;
+      const freq = parseInt(document.getElementById('dca-freq').value, 10);
+      const years = parseFloat(document.getElementById('dca-years').value) || 1;
+      const r = (parseFloat(document.getElementById('dca-growth').value) || 0) / 100;
+
+      const totalPeriods = freq * years;
+      const periodicRate = r / freq;
+      const totalInvested = pmt * totalPeriods;
+
+      let fv = 0;
+      for (let i = 0; i < totalPeriods; i++) {
+        fv += pmt * Math.pow(1 + periodicRate, totalPeriods - i);
+      }
+      const profit = fv - totalInvested;
+      const roi = totalInvested > 0 ? (profit / totalInvested) * 100 : 0;
+
+      document.getElementById('res-dca-invested').textContent = '$' + totalInvested.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('res-dca-val').textContent = '$' + fv.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('res-dca-profit').textContent = '+$' + profit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('res-dca-roi').textContent = '+' + roi.toFixed(2) + '%';
+    }
+    document.addEventListener('DOMContentLoaded', calcDCA);
+  </script>
+</body>
+</html>

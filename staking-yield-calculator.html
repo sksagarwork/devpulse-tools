@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staking APY Calculator – Compound Interest & Staking Yield</title>
+  <meta name="description" content="Calculate crypto staking rewards, compounding interest frequencies, and effective APY on Ethereum, Solana, Cardano, and Polkadot." />
+  <link rel="canonical" href="https://sksagarwork.github.io/devpulse-tools/staking-yield-calculator.html" />
+  <meta property="og:title" content="Staking APY Calculator – Compound Interest & Staking Yield" />
+  <meta property="og:description" content="Calculate crypto staking rewards, compounding interest frequencies, and effective APY on Ethereum, Solana, Cardano, and Polkadot." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sksagarwork.github.io/devpulse-tools/staking-yield-calculator.html" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Staking APY Calculator",
+    "url": "https://sksagarwork.github.io/devpulse-tools/staking-yield-calculator.html",
+    "description": "Calculate crypto staking rewards, compounding interest frequencies, and effective APY on Ethereum, Solana, Cardano, and Polkadot.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>CryptoCalc Pro</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Calculators</a>
+        <a href="impermanent-loss-calculator.html" class="nav-link">Impermanent Loss</a>
+        <a href="crypto-tax-calculator.html" class="nav-link">Tax / PnL</a>
+        <a href="staking-yield-calculator.html" class="nav-link">Staking APY</a>
+        <a href="dca-crypto-calculator.html" class="nav-link">DCA Backtest</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+  <div class="ad-slot" id="top-banner-ad">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-placeholder-text">⚡ High-Value Web3 & Exchange Banner (Bybit / Binance / Ledger Affiliate Slot)</div>
+    <!-- ADSENSE LEADERBOARD -->
+  </div>
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">CryptoCalc Pro</a> &gt; <span>Calculators</span> &gt; <span>Staking APY Calculator</span>
+      </div>
+      <h1>Staking APY Calculator</h1>
+      <p>Calculate crypto staking rewards, compounding interest frequencies, and effective APY on Ethereum, Solana, Cardano, and Polkadot.</p>
+    </div>
+
+    <div class="tool-box">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+        <div>
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Staked Principal Amount ($ USD or Tokens)</label>
+          <input type="number" id="stk-amt" class="input-field" style="width:100%; margin-bottom:1rem;" value="5000" oninput="calcStaking()" />
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Annual Percentage Rate (APR %)</label>
+          <input type="number" id="stk-apr" class="input-field" style="width:100%; margin-bottom:1rem;" value="6.5" oninput="calcStaking()" />
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Compounding Frequency</label>
+          <select id="stk-freq" class="input-field" style="width:100%; margin-bottom:1rem;" onchange="calcStaking()">
+            <option value="365" selected>Daily (365 times/year)</option>
+            <option value="52">Weekly (52 times/year)</option>
+            <option value="12">Monthly (12 times/year)</option>
+            <option value="1">Annually (No auto-compound)</option>
+          </select>
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Staking Duration (Years)</label>
+          <input type="number" id="stk-years" class="input-field" style="width:100%;" value="2" min="1" max="20" oninput="calcStaking()" />
+        </div>
+
+        <div>
+          <h3>Yield &amp; Compound Forecast</h3>
+          <div class="result-card">
+            <table class="data-table">
+              <tbody>
+                <tr><th>Effective APY (%)</th><td id="res-stk-apy" style="color:var(--success); font-size:1.2rem; font-weight:700;">6.72%</td></tr>
+                <tr><th>Initial Principal</th><td id="res-stk-principal">$5,000.00</td></tr>
+                <tr><th>Total Interest Earned</th><td id="res-stk-interest" style="color:var(--success); font-weight:700;">+$693.85</td></tr>
+                <tr><th>Final Balance</th><td id="res-stk-final" style="font-weight:700; font-size:1.1rem;">$5,693.85</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="seo-section">
+      <h2>APR vs. APY: The Power of Compounding in Staking</h2>
+      <p>APR represents simple interest without compounding. When staking rewards are restaked (auto-compounding daily or weekly), your effective yield increases to APY: <code>APY = (1 + r/n)^n - 1</code>. Over multi-year horizons, frequent compounding creates exponential portfolio growth.</p>
+    </section>
+
+  <div class="ad-slot" id="content-banner-ad">
+    <span class="ad-label">Sponsored Partner</span>
+    <div class="ad-placeholder-text">🔒 Recommended Hardware Wallet &amp; Low-Fee Crypto Exchanges</div>
+    <!-- ADSENSE CONTENT UNIT -->
+  </div>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>CryptoCalc Pro</span>
+        </div>
+        <p>The definitive financial toolkit for DeFi liquidity providers, crypto traders, and stakers. 100% private, client-side, zero signup required.</p>
+      </div>
+      <div class="footer-column">
+        <h4>DeFi & Trading</h4>
+        <ul>
+          <li><a href="impermanent-loss-calculator.html">Impermanent Loss Calculator</a></li>
+          <li><a href="crypto-tax-calculator.html">Crypto Capital Gains Tax</a></li>
+          <li><a href="staking-yield-calculator.html">Staking APY / Compounding</a></li>
+          <li><a href="liquidation-price-calculator.html">Futures Liquidation Price</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Investment & Strategy</h4>
+        <ul>
+          <li><a href="dca-crypto-calculator.html">DCA Profit Estimator</a></li>
+          <li><a href="crypto-profit-calculator.html">Risk/Reward & ROI Calculator</a></li>
+          <li><a href="sitemap.xml">XML Sitemap</a></li>
+          <li><a href="robots.txt">Robots.txt</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Disclaimer</h4>
+        <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">CryptoCalc Pro is an educational financial modeling tool. It does not provide financial or tax advice. Always consult certified financial advisors.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 CryptoCalc Pro. All rights reserved. Free DeFi Financial Calculators.</span>
+      <span>Live Real-Time Mathematical Models • Zero Tracking</span>
+    </div>
+  </footer>
+  <div id="toast"></div>
+  <script src="js/common.js"></script>
+  <script>
+    function calcStaking() {
+      const p = parseFloat(document.getElementById('stk-amt').value) || 0;
+      const apr = (parseFloat(document.getElementById('stk-apr').value) || 0) / 100;
+      const n = parseInt(document.getElementById('stk-freq').value, 10);
+      const t = parseFloat(document.getElementById('stk-years').value) || 1;
+
+      const apy = Math.pow(1 + (apr / n), n) - 1;
+      const finalAmt = p * Math.pow(1 + (apr / n), n * t);
+      const interest = finalAmt - p;
+
+      document.getElementById('res-stk-apy').textContent = (apy * 100).toFixed(2) + '%';
+      document.getElementById('res-stk-principal').textContent = '$' + p.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('res-stk-interest').textContent = '+$' + interest.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('res-stk-final').textContent = '$' + finalAmt.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+    document.addEventListener('DOMContentLoaded', calcStaking);
+  </script>
+</body>
+</html>

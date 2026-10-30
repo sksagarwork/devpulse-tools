@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impermanent Loss Calculator – Uniswap, PancakeSwap & SushiSwap AMM</title>
+  <meta name="description" content="Accurately calculate impermanent loss and compare LP pool earnings against HODLing for Uniswap, PancakeSwap, and Curve pools." />
+  <link rel="canonical" href="https://sksagarwork.github.io/devpulse-tools/impermanent-loss-calculator.html" />
+  <meta property="og:title" content="Impermanent Loss Calculator – Uniswap, PancakeSwap & SushiSwap AMM" />
+  <meta property="og:description" content="Accurately calculate impermanent loss and compare LP pool earnings against HODLing for Uniswap, PancakeSwap, and Curve pools." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sksagarwork.github.io/devpulse-tools/impermanent-loss-calculator.html" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Impermanent Loss Calculator",
+    "url": "https://sksagarwork.github.io/devpulse-tools/impermanent-loss-calculator.html",
+    "description": "Accurately calculate impermanent loss and compare LP pool earnings against HODLing for Uniswap, PancakeSwap, and Curve pools.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>CryptoCalc Pro</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Calculators</a>
+        <a href="impermanent-loss-calculator.html" class="nav-link">Impermanent Loss</a>
+        <a href="crypto-tax-calculator.html" class="nav-link">Tax / PnL</a>
+        <a href="staking-yield-calculator.html" class="nav-link">Staking APY</a>
+        <a href="dca-crypto-calculator.html" class="nav-link">DCA Backtest</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+  <div class="ad-slot" id="top-banner-ad">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-placeholder-text">⚡ High-Value Web3 & Exchange Banner (Bybit / Binance / Ledger Affiliate Slot)</div>
+    <!-- ADSENSE LEADERBOARD -->
+  </div>
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">CryptoCalc Pro</a> &gt; <span>Calculators</span> &gt; <span>Impermanent Loss Calculator</span>
+      </div>
+      <h1>Impermanent Loss Calculator</h1>
+      <p>Accurately calculate impermanent loss and compare LP pool earnings against HODLing for Uniswap, PancakeSwap, and Curve pools.</p>
+    </div>
+
+    <div class="tool-box">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+        <div>
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Initial Total Deposit Value ($ USD)</label>
+          <input type="number" id="il-deposit" class="input-field" style="width:100%; margin-bottom:1rem;" value="1000" oninput="calcIL()" />
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Asset A Price Change (%)</label>
+          <input type="number" id="il-price-a" class="input-field" style="width:100%; margin-bottom:1rem;" value="0" placeholder="e.g. 0 for stablecoins" oninput="calcIL()" />
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Asset B Price Change (%)</label>
+          <input type="number" id="il-price-b" class="input-field" style="width:100%; margin-bottom:1rem;" value="100" placeholder="e.g. 100 for 2x price increase" oninput="calcIL()" />
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Estimated Trading Fee APR (%) [Optional]</label>
+          <input type="number" id="il-apr" class="input-field" style="width:100%;" value="25" placeholder="Pool swap fee yield" oninput="calcIL()" />
+        </div>
+
+        <div>
+          <h3>Simulation Results</h3>
+          <div class="result-card">
+            <table class="data-table">
+              <tbody>
+                <tr><th>Impermanent Loss (%)</th><td id="res-il-pct" style="color:var(--danger); font-size:1.2rem; font-weight:700;">-5.72%</td></tr>
+                <tr><th>Loss in USD ($)</th><td id="res-il-usd" style="color:var(--danger); font-weight:700;">-$85.79</td></tr>
+                <tr><th>Value if Just HODLing</th><td id="res-hodl-val">$1,500.00</td></tr>
+                <tr><th>Value in Liquidity Pool</th><td id="res-pool-val">$1,414.21</td></tr>
+                <tr><th>Estimated 1-Year Fee Yield</th><td id="res-fees-val" style="color:var(--success);">+$353.55</td></tr>
+                <tr><th>Net Position (Pool + Fees)</th><td id="res-net-val" style="font-weight:700;">$1,767.76</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p id="il-verdict" style="margin-top:1rem; padding:0.85rem; border-radius:var(--radius-sm); font-size:0.95rem; background:var(--bg-tertiary);"></p>
+        </div>
+      </div>
+    </div>
+
+    <section class="seo-section">
+      <h2>The Mathematics Behind Impermanent Loss</h2>
+      <p>In standard automated market makers like Uniswap V2 and SushiSwap, liquidity pools maintain an invariant product: <code>x * y = k</code>. When the price ratio between the two pooled assets shifts by a factor of <code>k_ratio</code>, the percentage of impermanent loss is calculated using the formula:</p>
+      <pre style="background:var(--bg-secondary); padding:1rem; border-radius:var(--radius-sm); font-family:var(--font-mono); margin-bottom:1rem;">IL = (2 * sqrt(PriceRatio) / (1 + PriceRatio)) - 1</pre>
+      <p>If fee revenue generated by pool swaps exceeds the calculated impermanent loss, your position remains net profitable compared to holding.</p>
+    </section>
+
+  <div class="ad-slot" id="content-banner-ad">
+    <span class="ad-label">Sponsored Partner</span>
+    <div class="ad-placeholder-text">🔒 Recommended Hardware Wallet &amp; Low-Fee Crypto Exchanges</div>
+    <!-- ADSENSE CONTENT UNIT -->
+  </div>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>CryptoCalc Pro</span>
+        </div>
+        <p>The definitive financial toolkit for DeFi liquidity providers, crypto traders, and stakers. 100% private, client-side, zero signup required.</p>
+      </div>
+      <div class="footer-column">
+        <h4>DeFi & Trading</h4>
+        <ul>
+          <li><a href="impermanent-loss-calculator.html">Impermanent Loss Calculator</a></li>
+          <li><a href="crypto-tax-calculator.html">Crypto Capital Gains Tax</a></li>
+          <li><a href="staking-yield-calculator.html">Staking APY / Compounding</a></li>
+          <li><a href="liquidation-price-calculator.html">Futures Liquidation Price</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Investment & Strategy</h4>
+        <ul>
+          <li><a href="dca-crypto-calculator.html">DCA Profit Estimator</a></li>
+          <li><a href="crypto-profit-calculator.html">Risk/Reward & ROI Calculator</a></li>
+          <li><a href="sitemap.xml">XML Sitemap</a></li>
+          <li><a href="robots.txt">Robots.txt</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Disclaimer</h4>
+        <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">CryptoCalc Pro is an educational financial modeling tool. It does not provide financial or tax advice. Always consult certified financial advisors.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 CryptoCalc Pro. All rights reserved. Free DeFi Financial Calculators.</span>
+      <span>Live Real-Time Mathematical Models • Zero Tracking</span>
+    </div>
+  </footer>
+  <div id="toast"></div>
+  <script src="js/common.js"></script>
+  <script>
+    function calcIL() {
+      const deposit = parseFloat(document.getElementById('il-deposit').value) || 0;
+      const changeA = (parseFloat(document.getElementById('il-price-a').value) || 0) / 100;
+      const changeB = (parseFloat(document.getElementById('il-price-b').value) || 0) / 100;
+      const apr = (parseFloat(document.getElementById('il-apr').value) || 0) / 100;
+
+      const pA = 1 + changeA;
+      const pB = 1 + changeB;
+      const ratio = pB / pA;
+
+      const il = (2 * Math.sqrt(ratio) / (1 + ratio)) - 1;
+      const ilPct = il * 100;
+
+      const hodlVal = deposit * (pA + pB) / 2;
+      const poolVal = hodlVal * (1 + il);
+      const lossUsd = hodlVal - poolVal;
+      const feeYield = poolVal * apr;
+      const netVal = poolVal + feeYield;
+
+      document.getElementById('res-il-pct').textContent = ilPct.toFixed(2) + '%';
+      document.getElementById('res-il-usd').textContent = '-$' + Math.abs(lossUsd).toFixed(2);
+      document.getElementById('res-hodl-val').textContent = '$' + hodlVal.toFixed(2);
+      document.getElementById('res-pool-val').textContent = '$' + poolVal.toFixed(2);
+      document.getElementById('res-fees-val').textContent = '+$' + feeYield.toFixed(2);
+      document.getElementById('res-net-val').textContent = '$' + netVal.toFixed(2);
+
+      const verdict = document.getElementById('il-verdict');
+      if (netVal > hodlVal) {
+        verdict.innerHTML = '<span style="color:var(--success); font-weight:600;">✓ Liquidity provision is more profitable than HODLing</span> due to high swap fee earnings offsetting IL.';
+      } else {
+        verdict.innerHTML = '<span style="color:var(--warning); font-weight:600;">⚠ HODLing would have yielded more</span> because price divergence outpaced fee income.';
+      }
+    }
+    document.addEventListener('DOMContentLoaded', calcIL);
+  </script>
+</body>
+</html>

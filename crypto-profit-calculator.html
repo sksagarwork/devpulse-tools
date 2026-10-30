@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Profit & ROI Calculator – Trading Returns & Fee Deductions</title>
+  <meta name="description" content="Calculate net profit, percentage ROI, and exchange fee deductions for cryptocurrency spot and swing trades." />
+  <link rel="canonical" href="https://sksagarwork.github.io/devpulse-tools/crypto-profit-calculator.html" />
+  <meta property="og:title" content="Crypto Profit & ROI Calculator – Trading Returns & Fee Deductions" />
+  <meta property="og:description" content="Calculate net profit, percentage ROI, and exchange fee deductions for cryptocurrency spot and swing trades." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sksagarwork.github.io/devpulse-tools/crypto-profit-calculator.html" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Crypto Profit & ROI Calculator",
+    "url": "https://sksagarwork.github.io/devpulse-tools/crypto-profit-calculator.html",
+    "description": "Calculate net profit, percentage ROI, and exchange fee deductions for cryptocurrency spot and swing trades.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>CryptoCalc Pro</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Calculators</a>
+        <a href="impermanent-loss-calculator.html" class="nav-link">Impermanent Loss</a>
+        <a href="crypto-tax-calculator.html" class="nav-link">Tax / PnL</a>
+        <a href="staking-yield-calculator.html" class="nav-link">Staking APY</a>
+        <a href="dca-crypto-calculator.html" class="nav-link">DCA Backtest</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+  <div class="ad-slot" id="top-banner-ad">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-placeholder-text">⚡ High-Value Web3 & Exchange Banner (Bybit / Binance / Ledger Affiliate Slot)</div>
+    <!-- ADSENSE LEADERBOARD -->
+  </div>
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">CryptoCalc Pro</a> &gt; <span>Calculators</span> &gt; <span>Crypto Profit & ROI Calculator</span>
+      </div>
+      <h1>Crypto Profit & ROI Calculator</h1>
+      <p>Calculate net profit, percentage ROI, and exchange fee deductions for cryptocurrency spot and swing trades.</p>
+    </div>
+
+    <div class="tool-box">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+        <div>
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Total Investment Amount ($ USD)</label>
+          <input type="number" id="pft-invest" class="input-field" style="width:100%; margin-bottom:1rem;" value="2000" oninput="calcProfit()" />
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Buy Price per Coin ($ USD)</label>
+          <input type="number" id="pft-buy" class="input-field" style="width:100%; margin-bottom:1rem;" value="2500" oninput="calcProfit()" />
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Sell Price per Coin ($ USD)</label>
+          <input type="number" id="pft-sell" class="input-field" style="width:100%; margin-bottom:1rem;" value="4200" oninput="calcProfit()" />
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Exchange Trading Fee (%) [Each Way]</label>
+          <input type="number" id="pft-fee" class="input-field" style="width:100%;" value="0.1" step="0.05" oninput="calcProfit()" />
+        </div>
+
+        <div>
+          <h3>Trading ROI Breakdown</h3>
+          <div class="result-card">
+            <table class="data-table">
+              <tbody>
+                <tr><th>Net Profit</th><td id="res-pft-net" style="color:var(--success); font-size:1.3rem; font-weight:800;">+$1,354.64</td></tr>
+                <tr><th>Return on Investment (ROI)</th><td id="res-pft-roi" style="color:var(--success); font-weight:700;">+67.73%</td></tr>
+                <tr><th>Total Exit Value</th><td id="res-pft-exit" style="font-weight:700;">$3,354.64</td></tr>
+                <tr><th>Total Fees Paid</th><td id="res-pft-fees" style="color:var(--text-muted);">$5.36</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="ad-slot" id="content-banner-ad">
+    <span class="ad-label">Sponsored Partner</span>
+    <div class="ad-placeholder-text">🔒 Recommended Hardware Wallet &amp; Low-Fee Crypto Exchanges</div>
+    <!-- ADSENSE CONTENT UNIT -->
+  </div>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>CryptoCalc Pro</span>
+        </div>
+        <p>The definitive financial toolkit for DeFi liquidity providers, crypto traders, and stakers. 100% private, client-side, zero signup required.</p>
+      </div>
+      <div class="footer-column">
+        <h4>DeFi & Trading</h4>
+        <ul>
+          <li><a href="impermanent-loss-calculator.html">Impermanent Loss Calculator</a></li>
+          <li><a href="crypto-tax-calculator.html">Crypto Capital Gains Tax</a></li>
+          <li><a href="staking-yield-calculator.html">Staking APY / Compounding</a></li>
+          <li><a href="liquidation-price-calculator.html">Futures Liquidation Price</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Investment & Strategy</h4>
+        <ul>
+          <li><a href="dca-crypto-calculator.html">DCA Profit Estimator</a></li>
+          <li><a href="crypto-profit-calculator.html">Risk/Reward & ROI Calculator</a></li>
+          <li><a href="sitemap.xml">XML Sitemap</a></li>
+          <li><a href="robots.txt">Robots.txt</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Disclaimer</h4>
+        <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">CryptoCalc Pro is an educational financial modeling tool. It does not provide financial or tax advice. Always consult certified financial advisors.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 CryptoCalc Pro. All rights reserved. Free DeFi Financial Calculators.</span>
+      <span>Live Real-Time Mathematical Models • Zero Tracking</span>
+    </div>
+  </footer>
+  <div id="toast"></div>
+  <script src="js/common.js"></script>
+  <script>
+    function calcProfit() {
+      const invest = parseFloat(document.getElementById('pft-invest').value) || 0;
+      const buyPrice = parseFloat(document.getElementById('pft-buy').value) || 0;
+      const sellPrice = parseFloat(document.getElementById('pft-sell').value) || 0;
+      const feeRate = (parseFloat(document.getElementById('pft-fee').value) || 0) / 100;
+
+      const coins = buyPrice > 0 ? (invest * (1 - feeRate)) / buyPrice : 0;
+      const grossExit = coins * sellPrice;
+      const netExit = grossExit * (1 - feeRate);
+      const totalFees = (invest * feeRate) + (grossExit * feeRate);
+      const netProfit = netExit - invest;
+      const roi = invest > 0 ? (netProfit / invest) * 100 : 0;
+
+      document.getElementById('res-pft-net').textContent = (netProfit >= 0 ? '+' : '') + '$' + netProfit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('res-pft-net').style.color = netProfit >= 0 ? 'var(--success)' : 'var(--danger)';
+      document.getElementById('res-pft-roi').textContent = (roi >= 0 ? '+' : '') + roi.toFixed(2) + '%';
+      document.getElementById('res-pft-roi').style.color = roi >= 0 ? 'var(--success)' : 'var(--danger)';
+      document.getElementById('res-pft-exit').textContent = '$' + netExit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('res-pft-fees').textContent = '$' + totalFees.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+    document.addEventListener('DOMContentLoaded', calcProfit);
+  </script>
+</body>
+</html>

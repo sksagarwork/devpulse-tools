@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URL Encoder & Decoder – Percent Encoding Tool</title>
+  <meta name="description" content="Convert special characters and URLs into percent-encoded strings or unescape query parameters." />
+  <link rel="canonical" href="https://sksagarwork.github.io/devpulse-tools/url-encoder.html" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>DevPulse Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Tools</a>
+        <a href="ip-lookup.html" class="nav-link">IP Lookup</a>
+        <a href="dns-lookup.html" class="nav-link">DNS Inspector</a>
+        <a href="jwt-decoder.html" class="nav-link">JWT Decoder</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+  <div class="ad-slot" id="top-banner-ad">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-placeholder-text">⚡ Top Leaderboard Space (Google AdSense Responsive Unit)</div>
+    <!-- ADSENSE LEADERBOARD -->
+  </div>
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <span>Developer Tools</span> &gt; <span>URL Encoder & Decoder</span>
+      </div>
+      <h1>URL Encoder & Decoder</h1>
+      <p>Convert special characters and URLs into percent-encoded strings or unescape query parameters.</p>
+    </div>
+
+    <div class="tool-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+        <span style="font-weight:600;">Input URL / Text</span>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn-primary" onclick="doUrlEncode()">Encode URL</button>
+          <button class="btn-primary" onclick="doUrlDecode()">Decode URL</button>
+          <button class="btn-secondary" onclick="clearUrl()">Clear</button>
+        </div>
+      </div>
+      <textarea id="url-input" class="code-editor" style="min-height:160px;" placeholder="https://example.com/search?q=developer tools & category=web design"></textarea>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin:1.5rem 0 0.75rem;">
+        <span style="font-weight:600;">Output Result</span>
+        <button class="btn-secondary" onclick="copyText(document.getElementById('url-output').value)">Copy Output</button>
+      </div>
+      <textarea id="url-output" class="code-editor" style="min-height:160px;" readonly placeholder="Processed URL will appear here..."></textarea>
+      <div id="url-feedback" style="margin-top:0.75rem;"></div>
+    </div>
+
+  <div class="ad-slot" id="content-banner-ad">
+    <span class="ad-label">Sponsored Resource</span>
+    <div class="ad-placeholder-text">💡 Recommended Developer Services &amp; Tools</div>
+    <!-- ADSENSE CONTENT UNIT -->
+  </div>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>DevPulse Tools</span>
+        </div>
+        <p>Free, lightning-fast developer utilities and network diagnostic tools. 100% private and client-side executed.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Network Tools</h4>
+        <ul>
+          <li><a href="ip-lookup.html">IP Geolocation</a></li>
+          <li><a href="dns-lookup.html">DNS Inspector</a></li>
+          <li><a href="http-headers.html">HTTP Security Headers</a></li>
+          <li><a href="user-agent.html">User Agent Analyzer</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Developer Tools</h4>
+        <ul>
+          <li><a href="jwt-decoder.html">JWT Token Decoder</a></li>
+          <li><a href="json-formatter.html">JSON Validator</a></li>
+          <li><a href="base64.html">Base64 Encoder/Decoder</a></li>
+          <li><a href="url-encoder.html">URL Encoder/Decoder</a></li>
+          <li><a href="hash-generator.html">SHA Hash Generator</a></li>
+          <li><a href="uuid-generator.html">UUID v4 Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="sitemap.xml">XML Sitemap</a></li>
+          <li><a href="robots.txt">Robots.txt</a></li>
+          <li><a href="index.html">Privacy &amp; Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 DevPulse Tools. All rights reserved. Free online utilities for developers and webmasters.</span>
+      <span>Privacy Friendly • Zero Tracking</span>
+    </div>
+  </footer>
+  <div id="toast"></div>
+  <script src="js/common.js"></script>
+  <script>
+    function doUrlEncode() {
+      const input = document.getElementById('url-input').value;
+      document.getElementById('url-output').value = encodeURIComponent(input);
+      document.getElementById('url-feedback').innerHTML = '<span class="badge badge-success">✓ Encoded</span>';
+    }
+    function doUrlDecode() {
+      const input = document.getElementById('url-input').value.trim();
+      try {
+        document.getElementById('url-output').value = decodeURIComponent(input);
+        document.getElementById('url-feedback').innerHTML = '<span class="badge badge-success">✓ Decoded</span>';
+      } catch (e) {
+        document.getElementById('url-feedback').innerHTML = '<span class="badge badge-danger">✗ Malformed URI sequence</span>';
+      }
+    }
+    function clearUrl() {
+      document.getElementById('url-input').value = '';
+      document.getElementById('url-output').value = '';
+      document.getElementById('url-feedback').innerHTML = '';
+    }
+  </script>
+</body>
+</html>

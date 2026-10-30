@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UUID v4 Generator – Bulk Unique Identifiers</title>
+  <meta name="description" content="Generate cryptographically random RFC 4122 compliant Version 4 UUIDs for database keys and APIs." />
+  <link rel="canonical" href="https://sksagarwork.github.io/devpulse-tools/uuid-generator.html" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>DevPulse Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Tools</a>
+        <a href="ip-lookup.html" class="nav-link">IP Lookup</a>
+        <a href="dns-lookup.html" class="nav-link">DNS Inspector</a>
+        <a href="jwt-decoder.html" class="nav-link">JWT Decoder</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+  <div class="ad-slot" id="top-banner-ad">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-placeholder-text">⚡ Top Leaderboard Space (Google AdSense Responsive Unit)</div>
+    <!-- ADSENSE LEADERBOARD -->
+  </div>
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <span>Developer Tools</span> &gt; <span>UUID v4 Generator</span>
+      </div>
+      <h1>UUID v4 Generator</h1>
+      <p>Generate cryptographically random RFC 4122 compliant Version 4 UUIDs for database keys and APIs.</p>
+    </div>
+
+    <div class="tool-box">
+      <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap;">
+        <label style="font-weight:600;">Quantity:</label>
+        <select id="uuid-qty" class="input-field" style="max-width:120px;">
+          <option value="1">1</option>
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+        <label style="display:inline-flex; align-items:center; gap:0.4rem; cursor:pointer;">
+          <input type="checkbox" id="uuid-upper" /> Uppercase
+        </label>
+        <label style="display:inline-flex; align-items:center; gap:0.4rem; cursor:pointer;">
+          <input type="checkbox" id="uuid-hyphens" checked /> Include Hyphens
+        </label>
+        <button class="btn-primary" onclick="generateUUIDs()">
+          <span>⚡</span> Generate UUIDs
+        </button>
+        <button class="btn-secondary" onclick="copyText(document.getElementById('uuid-output').value)">
+          <span>📋</span> Copy All
+        </button>
+      </div>
+      <textarea id="uuid-output" class="code-editor" style="min-height:240px;" readonly></textarea>
+    </div>
+
+  <div class="ad-slot" id="content-banner-ad">
+    <span class="ad-label">Sponsored Resource</span>
+    <div class="ad-placeholder-text">💡 Recommended Developer Services &amp; Tools</div>
+    <!-- ADSENSE CONTENT UNIT -->
+  </div>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>DevPulse Tools</span>
+        </div>
+        <p>Free, lightning-fast developer utilities and network diagnostic tools. 100% private and client-side executed.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Network Tools</h4>
+        <ul>
+          <li><a href="ip-lookup.html">IP Geolocation</a></li>
+          <li><a href="dns-lookup.html">DNS Inspector</a></li>
+          <li><a href="http-headers.html">HTTP Security Headers</a></li>
+          <li><a href="user-agent.html">User Agent Analyzer</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Developer Tools</h4>
+        <ul>
+          <li><a href="jwt-decoder.html">JWT Token Decoder</a></li>
+          <li><a href="json-formatter.html">JSON Validator</a></li>
+          <li><a href="base64.html">Base64 Encoder/Decoder</a></li>
+          <li><a href="url-encoder.html">URL Encoder/Decoder</a></li>
+          <li><a href="hash-generator.html">SHA Hash Generator</a></li>
+          <li><a href="uuid-generator.html">UUID v4 Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="sitemap.xml">XML Sitemap</a></li>
+          <li><a href="robots.txt">Robots.txt</a></li>
+          <li><a href="index.html">Privacy &amp; Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 DevPulse Tools. All rights reserved. Free online utilities for developers and webmasters.</span>
+      <span>Privacy Friendly • Zero Tracking</span>
+    </div>
+  </footer>
+  <div id="toast"></div>
+  <script src="js/common.js"></script>
+  <script>
+    function generateUUIDs() {
+      const qty = parseInt(document.getElementById('uuid-qty').value, 10);
+      const upper = document.getElementById('uuid-upper').checked;
+      const hyphens = document.getElementById('uuid-hyphens').checked;
+      const list = [];
+      for (let i = 0; i < qty; i++) {
+        let u = crypto.randomUUID();
+        if (!hyphens) u = u.replace(/-/g, '');
+        if (upper) u = u.toUpperCase();
+        list.push(u);
+      }
+      document.getElementById('uuid-output').value = list.join('
+');
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      generateUUIDs();
+    });
+  </script>
+</body>
+</html>

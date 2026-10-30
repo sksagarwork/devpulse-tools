@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://devpulse-tools.netlify.app/sitemap.xml
+Sitemap: https://sksagarwork.github.io/devpulse-tools/sitemap.xml

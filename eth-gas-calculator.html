@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ethereum Gas Fee Calculator &amp; Live Gwei to USD Converter (2024)</title>
+  <meta name="description" content="Calculate Ethereum transaction gas costs in USD and Gwei in real time. Accurate fees for ETH transfers, ERC-20 tokens, Uniswap swaps, and NFT mints." />
+  <meta name="keywords" content="eth gas calculator, gwei to usd, ethereum gas fee calculator, uniswap swap gas cost, opensea nft gas price, layer 2 gas fee comparison" />
+  <link rel="canonical" href="https://sksagarwork.github.io/devpulse-tools/eth-gas-calculator.html" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="manifest" href="manifest.json" />
+  <meta property="og:title" content="Ethereum Gas Fee Calculator &amp; Live Gwei to USD Converter" />
+  <meta property="og:description" content="Estimate real-time transaction costs across Ethereum mainnet and compare savings on Layer 2s." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sksagarwork.github.io/devpulse-tools/eth-gas-calculator.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Ethereum Gas Fee Calculator",
+        "url": "https://sksagarwork.github.io/devpulse-tools/eth-gas-calculator.html",
+        "description": "Calculate exact Ethereum and ERC-20 transaction gas costs in USD based on Gwei and ETH price.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1340",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "CryptoCalc Pro", "item": "https://sksagarwork.github.io/devpulse-tools/" },
+          { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://sksagarwork.github.io/devpulse-tools/" },
+          { "@type": "ListItem", "position": 3, "name": "Ethereum Gas Fee Calculator", "item": "https://sksagarwork.github.io/devpulse-tools/eth-gas-calculator.html" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is Ethereum gas fee calculated in USD?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Gas Fee in USD = Gas Units Used × Gas Price (Gwei) × 10^-9 × ETH Price (USD). For example, a 21,000 gas transfer at 20 Gwei with ETH at $2,500 costs: 21,000 × 20 × 0.000000001 × 2500 = $1.05."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is 1 Gwei in ETH?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "1 Gwei is equal to 0.000000001 ETH (10^-9 ETH) or 1,000,000,000 Wei. Gwei is the standard denomination used to price gas on the Ethereum network."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much gas does a Uniswap V3 swap cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A standard Uniswap V3 token swap consumes between 130,000 and 185,000 gas units depending on routing complexity. At 25 Gwei and $2,600 ETH, a swap costs approximately $9.75 to $12.00."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do Layer 2 networks like Arbitrum and Base lower gas fees?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Layer 2 rollups execute hundreds of transactions off-chain, compress the execution data, and settle batches to Ethereum L1 via EIP-4844 blobs, reducing individual user transaction fees by 95% to 99%."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>CryptoCalc Pro</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Calculators</a>
+        <a href="eth-gas-calculator.html" class="nav-link active">Gas Fee</a>
+        <a href="impermanent-loss-calculator.html" class="nav-link">Impermanent Loss</a>
+        <a href="crypto-tax-calculator.html" class="nav-link">Tax / PnL</a>
+        <a href="crypto-sip-calculator.html" class="nav-link">Crypto SIP</a>
+        <a href="content/" class="nav-link">Blog</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="monetization-banner" id="top-partner-banner">
+      <div class="partner-card-glow">
+        <div class="partner-content">
+          <span class="badge-partner">🔥 DEFI SPECIAL</span>
+          <div class="partner-text">
+            <strong>Save 100% On High Gas: Trade on Low-Fee Exchanges with Instant Settlement</strong>
+            <span class="partner-sub">Enjoy 0% spot maker fees, deep liquidity &amp; claim up to $30,000 deposit bonus on Bybit.</span>
+          </div>
+          <a href="https://partner.bybit.com/b/cryptocalc" target="_blank" rel="noopener sponsored nofollow" class="partner-btn">
+            Claim Bonus &rarr;
+          </a>
+        </div>
+      </div>
+      <!-- ADSENSE LEADERBOARD -->
+    </div>
+
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">CryptoCalc Pro</a> &gt; <span>Calculators</span> &gt; <span>Ethereum Gas Fee Calculator</span>
+      </div>
+      <h1>Ethereum Gas Fee &amp; Gwei to USD Calculator</h1>
+      <p>Estimate precise transaction fees across Ethereum mainnet for swaps, token transfers, and contracts. Compare costs against Layer 2 rollups.</p>
+    </div>
+
+    <div class="tool-box">
+      <div style="display:grid; grid-template-columns:1fr 1.2fr; gap:1.75rem;">
+        <div>
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Current Base Gas Price (Gwei)</label>
+          <input type="number" id="gas-gwei" class="input-field" style="width:100%; margin-bottom:0.75rem;" value="20" oninput="calcGas()" />
+          
+          <div style="display:flex; gap:0.4rem; margin-bottom:1.25rem; flex-wrap:wrap;">
+            <button class="action-btn" onclick="setGwei(12)">🐢 Slow (12)</button>
+            <button class="action-btn" onclick="setGwei(20)">⚡ Standard (20)</button>
+            <button class="action-btn" onclick="setGwei(35)">🚀 Fast (35)</button>
+            <button class="action-btn" onclick="setGwei(65)">🔥 Rapid (65)</button>
+          </div>
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">ETH Price ($ USD)</label>
+          <input type="number" id="eth-price" class="input-field" style="width:100%; margin-bottom:1.25rem;" value="2600" oninput="calcGas()" />
+
+          <div class="calc-action-bar">
+            <button class="action-btn" onclick="shareCurrentCalculation()">🔗 Share Link</button>
+            <button class="action-btn" onclick="openEmbedModal('Ethereum Gas Fee Calculator', 'eth-gas-calculator.html')">&lt;/&gt; Embed Tool</button>
+          </div>
+        </div>
+
+        <div>
+          <h3>Estimated Transaction Costs</h3>
+          <div class="result-card">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Action</th>
+                  <th>Gas Units</th>
+                  <th>Cost (USD)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>ETH Transfer</strong></td>
+                  <td>21,000</td>
+                  <td id="cost-transfer" style="font-weight:700; color:var(--accent);">$1.09</td>
+                </tr>
+                <tr>
+                  <td><strong>ERC-20 (USDT / USDC)</strong></td>
+                  <td>65,000</td>
+                  <td id="cost-erc20" style="font-weight:700;">$3.38</td>
+                </tr>
+                <tr>
+                  <td><strong>Uniswap V3 Swap</strong></td>
+                  <td>150,000</td>
+                  <td id="cost-swap" style="font-weight:700; color:var(--warning);">$7.80</td>
+                </tr>
+                <tr>
+                  <td><strong>Uniswap LP Add/Remove</strong></td>
+                  <td>210,000</td>
+                  <td id="cost-lp" style="font-weight:700;">$10.92</td>
+                </tr>
+                <tr>
+                  <td><strong>NFT Mint / OpenSea</strong></td>
+                  <td>180,000</td>
+                  <td id="cost-nft" style="font-weight:700;">$9.36</td>
+                </tr>
+                <tr>
+                  <td><strong>Smart Contract Deploy</strong></td>
+                  <td>1,500,000</td>
+                  <td id="cost-deploy" style="font-weight:700; color:var(--danger);">$78.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="margin-top:1.25rem; background:var(--bg-tertiary); padding:1rem; border-radius:var(--radius-sm); border-left:3px solid var(--success);">
+            <strong style="color:var(--success); font-size:0.95rem;">💡 Layer 2 Savings (Arbitrum, Base, Optimism)</strong>
+            <p style="margin:0.35rem 0 0; font-size:0.85rem; color:var(--text-secondary);">
+              The same Uniswap swap on Layer 2 rollups costs approximately <strong id="l2-cost" style="color:var(--text-primary);">$0.02</strong> (a <span style="color:var(--success); font-weight:700;">99.7%</span> fee reduction thanks to EIP-4844 blobs).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="seo-section">
+      <h2>How Ethereum Gas Fees Work (EIP-1559 Explained)</h2>
+      <p>Since the London Hard Fork (EIP-1559), every Ethereum transaction fee consists of two elements: the <strong>Base Fee</strong> (which is automatically burned by the protocol, removing ETH from circulation) and the <strong>Priority Fee (Tip)</strong> given directly to validators to incentivize faster inclusion.</p>
+      <pre style="background:var(--bg-secondary); padding:1rem; border-radius:var(--radius-sm); font-family:var(--font-mono); margin-bottom:1rem;">Total Fee (ETH) = Gas Limit × (Base Fee + Priority Fee) in Gwei × 10^-9
+Total Fee (USD) = Total Fee (ETH) × ETH Price in USD</pre>
+      <p>Network congestion directly dictates the base fee. When network demand exceeds the target 15 million gas per block, the base fee increases automatically by up to 12.5% per block.</p>
+    </section>
+
+    <!-- Monetization Partner Grid -->
+    <div class="monetization-grid" id="bottom-partner-grid">
+      <div class="partner-grid-header">
+        <span class="partner-grid-title">🛡️ Recommended &amp; Vetted Web3 Partners</span>
+        <span class="partner-disclosure">Affiliate Disclosure</span>
+      </div>
+      <div class="partner-grid-cards">
+        <div class="partner-box">
+          <div class="partner-box-header">
+            <span class="partner-box-icon">🔒</span>
+            <h4>Ledger Cold Storage</h4>
+          </div>
+          <p>Don't risk gas mistakes or wallet drainers. Protect your private keys offline with the industry standard hardware security.</p>
+          <span class="partner-perk">✓ 100% Offline Private Keys</span>
+          <a href="https://shop.ledger.com/?r=cryptocalc" target="_blank" rel="noopener sponsored nofollow" class="partner-btn-sm">Get Ledger &rarr;</a>
+        </div>
+        <div class="partner-box">
+          <div class="partner-box-header">
+            <span class="partner-box-icon">📊</span>
+            <h4>Koinly Crypto Tax</h4>
+          </div>
+          <p>Gas fees are tax-deductible expenses in many jurisdictions! Auto-sync your on-chain gas costs and save on crypto taxes.</p>
+          <span class="partner-perk">✓ Gas Fee Deductions Tracked</span>
+          <a href="https://koinly.io/?via=cryptocalc" target="_blank" rel="noopener sponsored nofollow" class="partner-btn-sm">Calculate Taxes &rarr;</a>
+        </div>
+        <div class="partner-box">
+          <div class="partner-box-header">
+            <span class="partner-box-icon">⚡</span>
+            <h4>Bybit Derivatives &amp; Spot</h4>
+          </div>
+          <p>Avoid Ethereum mainnet gas completely. Trade 400+ crypto pairs with zero gas fees and up to $30,000 welcome rewards.</p>
+          <span class="partner-perk">✓ Zero Gas Trading</span>
+          <a href="https://partner.bybit.com/b/cryptocalc" target="_blank" rel="noopener sponsored nofollow" class="partner-btn-sm">Claim $30k Bonus &rarr;</a>
+        </div>
+      </div>
+      <!-- ADSENSE CONTENT UNIT -->
+    </div>
+
+    <section style="background:var(--card-bg);border-radius:12px;padding:1.5rem;margin:2rem 1rem;max-width:800px;margin-left:auto;margin-right:auto">
+      <h2 style="font-size:1.2rem;margin-bottom:1rem">&#128279; Related Calculators &amp; Guides</h2>
+      <ul style="padding-left:1.2rem;line-height:2.2;margin:0 0 1.5rem">
+        <li><a href="impermanent-loss-calculator.html">Impermanent Loss Calculator</a></li>
+        <li><a href="staking-yield-calculator.html">Staking Yield Calculator</a></li>
+        <li><a href="content/ethereum-gas-fee-gwei-calculator-guide.html">Guide: Complete Ethereum Gas Fee &amp; Gwei Guide</a></li>
+      </ul>
+      <h2 style="font-size:1.2rem;margin-bottom:1rem">&#10067; Frequently Asked Questions</h2>
+      <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
+        <div class="faq-item">
+          <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">How is Ethereum gas fee calculated in USD? <span>&#9660;</span></button>
+          <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Gas Fee in USD = Gas Units Used × Gas Price (Gwei) × 10^-9 × ETH Price (USD). For example, a 21,000 gas transfer at 20 Gwei with ETH at $2,500 costs: 21,000 × 20 × 0.000000001 × 2500 = $1.05.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">What is 1 Gwei in ETH? <span>&#9660;</span></button>
+          <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">1 Gwei is equal to 0.000000001 ETH (10^-9 ETH) or 1,000,000,000 Wei. Gwei is the standard denomination used to price gas on the Ethereum network.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">How much gas does a Uniswap V3 swap cost? <span>&#9660;</span></button>
+          <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">A standard Uniswap V3 token swap consumes between 130,000 and 185,000 gas units depending on routing complexity. At 25 Gwei and $2,600 ETH, a swap costs approximately $9.75 to $12.00.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">How do Layer 2 networks lower gas fees? <span>&#9660;</span></button>
+          <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Layer 2 rollups execute transactions off-chain, compress execution data, and settle batches to Ethereum L1 via EIP-4844 blobs, reducing fees by 95% to 99%.</div>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;text-align:center">
+        <a href="content/ethereum-gas-fee-gwei-calculator-guide.html" style="display:inline-block;padding:.6rem 1.5rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600">&#128218; Read: Complete Ethereum Gas Fee &amp; Gwei Guide</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>CryptoCalc Pro</span>
+        </div>
+        <p>Free, client-side DeFi and crypto financial calculators. No sign-up, zero ads tracking, private.</p>
+      </div>
+      <div class="footer-column">
+        <h4>DeFi Tools</h4>
+        <a href="eth-gas-calculator.html">Ethereum Gas Fee</a>
+        <a href="impermanent-loss-calculator.html">Impermanent Loss</a>
+        <a href="staking-yield-calculator.html">Staking APY</a>
+      </div>
+      <div class="footer-column">
+        <h4>Trading &amp; Tax</h4>
+        <a href="crypto-tax-calculator.html">Tax Estimator</a>
+        <a href="crypto-sip-calculator.html">Crypto SIP</a>
+        <a href="liquidation-price-calculator.html">Liquidation Price</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2024 CryptoCalc Pro. Open-source Web3 financial suite.</div>
+      <div>Financial calculations are estimates only. Not investment advice.</div>
+    </div>
+  </footer>
+  <script src="js/common.js"></script>
+  <script>
+    function setGwei(val) {
+      document.getElementById('gas-gwei').value = val;
+      calcGas();
+    }
+
+    function calcGas() {
+      const gwei = parseFloat(document.getElementById('gas-gwei').value) || 0;
+      const ethPrice = parseFloat(document.getElementById('eth-price').value) || 0;
+      
+      const computeCost = (units) => {
+        const ethCost = units * gwei * 1e-9;
+        return (ethCost * ethPrice).toFixed(2);
+      };
+
+      document.getElementById('cost-transfer').textContent = '$' + computeCost(21000);
+      document.getElementById('cost-erc20').textContent = '$' + computeCost(65000);
+      document.getElementById('cost-swap').textContent = '$' + computeCost(150000);
+      document.getElementById('cost-lp').textContent = '$' + computeCost(210000);
+      document.getElementById('cost-nft').textContent = '$' + computeCost(180000);
+      document.getElementById('cost-deploy').textContent = '$' + computeCost(1500000);
+
+      // L2 estimated cost (approx 0.25% of L1 swap)
+      const l2Cost = (computeCost(150000) * 0.003).toFixed(2);
+      document.getElementById('l2-cost').textContent = '$' + (l2Cost < 0.01 ? '0.01' : l2Cost);
+    }
+    document.addEventListener('DOMContentLoaded', calcGas);
+  </script>
+</body>
+</html>

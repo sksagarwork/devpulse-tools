@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://sksagarwork.github.io/devpulse-tools/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://sksagarwork.github.io/devpulse-tools/eth-gas-calculator.html</loc><changefreq>daily</changefreq><priority>0.95</priority></url>
+  <url><loc>https://sksagarwork.github.io/devpulse-tools/crypto-sip-calculator.html</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://sksagarwork.github.io/devpulse-tools/impermanent-loss-calculator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://sksagarwork.github.io/devpulse-tools/crypto-tax-calculator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://sksagarwork.github.io/devpulse-tools/staking-yield-calculator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://sksagarwork.github.io/devpulse-tools/dca-crypto-calculator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://sksagarwork.github.io/devpulse-tools/liquidation-price-calculator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://sksagarwork.github.io/devpulse-tools/crypto-profit-calculator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://sksagarwork.github.io/devpulse-tools/content/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sksagarwork.github.io/devpulse-tools/content/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://sksagarwork.github.io/devpulse-tools/content/ethereum-gas-fee-gwei-calculator-guide.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sksagarwork.github.io/devpulse-tools/content/crypto-sip-bitcoin-wealth-strategy-guide.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sksagarwork.github.io/devpulse-tools/content/what-is-impermanent-loss-uniswap-explained.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sksagarwork.github.io/devpulse-tools/content/how-to-calculate-crypto-tax-us-uk-australia.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sksagarwork.github.io/devpulse-tools/content/ethereum-staking-compound-interest-calculator-explained.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>

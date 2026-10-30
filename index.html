@@ -27,6 +27,9 @@
     }
   }
   </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="twitter:card" content="summary_large_image" />
 </head>
 <body>
   <header>
@@ -40,6 +43,8 @@
         <a href="impermanent-loss-calculator.html" class="nav-link">Impermanent Loss</a>
         <a href="crypto-tax-calculator.html" class="nav-link">Tax / PnL</a>
         <a href="staking-yield-calculator.html" class="nav-link">Staking APY</a>
+        <a href="eth-gas-calculator.html" class="nav-link">Gas Fee</a>
+        <a href="crypto-sip-calculator.html" class="nav-link">Crypto SIP</a>
         <a href="dca-crypto-calculator.html" class="nav-link">DCA Backtest</a>
         <a href="content/" class="nav-link">Blog</a>
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
@@ -49,9 +54,19 @@
     </div>
   </header>
   <main>
-  <div class="ad-slot" id="top-banner-ad">
-    <span class="ad-label">Advertisement</span>
-    <div class="ad-placeholder-text">⚡ High-Value Web3 & Exchange Banner (Bybit / Binance / Ledger Affiliate Slot)</div>
+    <div class="monetization-banner" id="top-partner-banner">
+    <div class="partner-card-glow">
+      <div class="partner-content">
+        <span class="badge-partner">🔥 DEFI SPECIAL</span>
+        <div class="partner-text">
+          <strong>Trade Crypto with 0% Spot Fees + Claim Up to $30,000 Deposit Bonus</strong>
+          <span class="partner-sub">Industry-leading liquidity, top perpetuals &amp; zero-slippage execution on Bybit.</span>
+        </div>
+        <a href="https://partner.bybit.com/b/cryptocalc" target="_blank" rel="noopener sponsored nofollow" class="partner-btn">
+          Claim Bonus &rarr;
+        </a>
+      </div>
+    </div>
     <!-- ADSENSE LEADERBOARD -->
   </div>
     <div class="tool-page-header">
@@ -173,9 +188,41 @@
       </div>
     </section>
 
-  <div class="ad-slot" id="content-banner-ad">
-    <span class="ad-label">Sponsored Partner</span>
-    <div class="ad-placeholder-text">🔒 Recommended Hardware Wallet &amp; Low-Fee Crypto Exchanges</div>
+    <!-- Monetization Partner Grid -->
+  <div class="monetization-grid" id="bottom-partner-grid">
+    <div class="partner-grid-header">
+      <span class="partner-grid-title">🛡️ Recommended &amp; Vetted Web3 Partners</span>
+      <span class="partner-disclosure">Affiliate Disclosure</span>
+    </div>
+    <div class="partner-grid-cards">
+      <div class="partner-box">
+        <div class="partner-box-header">
+          <span class="partner-box-icon">🔒</span>
+          <h4>Ledger Cold Storage</h4>
+        </div>
+        <p>Protect your private keys offline. Genuine hardware wallet security against exchange insolvencies.</p>
+        <span class="partner-perk">✓ 100% Offline Private Keys</span>
+        <a href="https://shop.ledger.com/?r=cryptocalc" target="_blank" rel="noopener sponsored nofollow" class="partner-btn-sm">Get Ledger &rarr;</a>
+      </div>
+      <div class="partner-box">
+        <div class="partner-box-header">
+          <span class="partner-box-icon">📊</span>
+          <h4>Koinly Crypto Tax Calculator</h4>
+        </div>
+        <p>Sync 800+ wallets, exchanges &amp; DeFi protocols. Generate IRS Form 8949, HMRC &amp; ATO reports.</p>
+        <span class="partner-perk">✓ Save 20+ Hours on Tax Filing</span>
+        <a href="https://koinly.io/?via=cryptocalc" target="_blank" rel="noopener sponsored nofollow" class="partner-btn-sm">Calculate Taxes &rarr;</a>
+      </div>
+      <div class="partner-box">
+        <div class="partner-box-header">
+          <span class="partner-box-icon">⚡</span>
+          <h4>Bybit Derivatives &amp; Spot</h4>
+        </div>
+        <p>Lowest maker/taker fees in crypto. Up to 100x leverage on BTC, ETH &amp; 400+ altcoins with zero KYC required.</p>
+        <span class="partner-perk">✓ Up to $30,000 Welcome Perks</span>
+        <a href="https://partner.bybit.com/b/cryptocalc" target="_blank" rel="noopener sponsored nofollow" class="partner-btn-sm">Claim $30k Bonus &rarr;</a>
+      </div>
+    </div>
     <!-- ADSENSE CONTENT UNIT -->
   </div>
   </main>

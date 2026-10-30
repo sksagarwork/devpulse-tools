@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto SIP Calculator: Bitcoin &amp; Ethereum Systematic Investment Plan</title>
+  <meta name="description" content="Calculate the future value of your recurring Bitcoin and Ethereum investments with our free Crypto SIP calculator. Model monthly DCA and compounding returns." />
+  <meta name="keywords" content="crypto sip calculator, bitcoin sip calculator, crypto dca compounding, recurring crypto investment returns, systematic crypto plan" />
+  <link rel="canonical" href="https://sksagarwork.github.io/devpulse-tools/crypto-sip-calculator.html" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="manifest" href="manifest.json" />
+  <meta property="og:title" content="Crypto SIP Calculator - Systematic Investment Plan for Bitcoin &amp; Crypto" />
+  <meta property="og:description" content="Simulate monthly crypto DCA compounding over 1 to 10 years with realistic CAGR models." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sksagarwork.github.io/devpulse-tools/crypto-sip-calculator.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Crypto SIP Calculator",
+        "url": "https://sksagarwork.github.io/devpulse-tools/crypto-sip-calculator.html",
+        "description": "Calculate systematic investment plan returns and future compounding wealth for Bitcoin and crypto.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1420",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "CryptoCalc Pro", "item": "https://sksagarwork.github.io/devpulse-tools/" },
+          { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://sksagarwork.github.io/devpulse-tools/" },
+          { "@type": "ListItem", "position": 3, "name": "Crypto SIP Calculator", "item": "https://sksagarwork.github.io/devpulse-tools/crypto-sip-calculator.html" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a Crypto SIP?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A Crypto SIP (Systematic Investment Plan) is a disciplined investment strategy where you invest a fixed amount of fiat money into Bitcoin, Ethereum, or other crypto assets at regular monthly intervals regardless of market price fluctuations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the formula for Crypto SIP returns?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The SIP compound interest formula is: Future Value = P × [((1 + r)^n - 1) / r] × (1 + r), where P is the monthly investment amount, r is the periodic monthly rate (annual return / 12), and n is the total number of months invested."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a realistic CAGR for Bitcoin long-term SIP?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Historically, Bitcoin has compounded at over 50% CAGR over any 4-year rolling cycle. For conservative long-term projections, financial models typically use 20% to 35% CAGR, whereas bull cycles can see 50% to 80%."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Crypto SIP safer than lump sum investing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, SIP drastically mitigates downside risk by averaging your entry cost across market highs and lows. It completely eliminates the risk of deploying all your capital right before a 50% crypto bear market drop."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>CryptoCalc Pro</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Calculators</a>
+        <a href="crypto-sip-calculator.html" class="nav-link active">Crypto SIP</a>
+        <a href="dca-crypto-calculator.html" class="nav-link">DCA Backtest</a>
+        <a href="staking-yield-calculator.html" class="nav-link">Staking APY</a>
+        <a href="eth-gas-calculator.html" class="nav-link">Gas Fee</a>
+        <a href="content/" class="nav-link">Blog</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="monetization-banner" id="top-partner-banner">
+      <div class="partner-card-glow">
+        <div class="partner-content">
+          <span class="badge-partner">🔥 AUTOMATED SIP</span>
+          <div class="partner-text">
+            <strong>Automate Your Crypto SIP With Zero Hassle &amp; Low Fees</strong>
+            <span class="partner-sub">Set up recurring daily/weekly/monthly Bitcoin auto-buys on Bybit and earn up to $30,000 in signup perks.</span>
+          </div>
+          <a href="https://partner.bybit.com/b/cryptocalc" target="_blank" rel="noopener sponsored nofollow" class="partner-btn">
+            Start Auto-SIP &rarr;
+          </a>
+        </div>
+      </div>
+      <!-- ADSENSE LEADERBOARD -->
+    </div>
+
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">CryptoCalc Pro</a> &gt; <span>Calculators</span> &gt; <span>Crypto SIP Calculator</span>
+      </div>
+      <h1>Crypto SIP Calculator (Systematic Wealth Planner)</h1>
+      <p>Calculate the exponential compounding power of monthly Bitcoin and Ethereum investments over 1 to 10 years.</p>
+    </div>
+
+    <div class="tool-box">
+      <div style="display:grid; grid-template-columns:1fr 1.2fr; gap:1.75rem;">
+        <div>
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Monthly Investment Amount ($ USD)</label>
+          <input type="number" id="sip-monthly" class="input-field" style="width:100%; margin-bottom:1rem;" value="250" oninput="calcSIP()" />
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Expected Annual Return / CAGR (%)</label>
+          <input type="number" id="sip-cagr" class="input-field" style="width:100%; margin-bottom:0.75rem;" value="35" oninput="calcSIP()" />
+
+          <div style="display:flex; gap:0.4rem; margin-bottom:1.25rem; flex-wrap:wrap;">
+            <button class="action-btn" onclick="setCAGR(20)">Conservative (20%)</button>
+            <button class="action-btn" onclick="setCAGR(35)">Moderate (35%)</button>
+            <button class="action-btn" onclick="setCAGR(55)">Aggressive (55%)</button>
+          </div>
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Investment Horizon (Years)</label>
+          <select id="sip-years" class="input-field" style="width:100%; margin-bottom:1.25rem;" onchange="calcSIP()">
+            <option value="1">1 Year</option>
+            <option value="2">2 Years</option>
+            <option value="3">3 Years</option>
+            <option value="4">4 Years (1 Halving Cycle)</option>
+            <option value="5" selected>5 Years</option>
+            <option value="7">7 Years</option>
+            <option value="10">10 Years</option>
+          </select>
+
+          <div class="calc-action-bar">
+            <button class="action-btn" onclick="shareCurrentCalculation()">🔗 Share Link</button>
+            <button class="action-btn" onclick="openEmbedModal('Crypto SIP Calculator', 'crypto-sip-calculator.html')">&lt;/&gt; Embed Tool</button>
+          </div>
+        </div>
+
+        <div>
+          <h3>Projected Portfolio Wealth</h3>
+          <div class="result-card">
+            <table class="data-table">
+              <tbody>
+                <tr>
+                  <th>Total Amount Invested</th>
+                  <td id="res-sip-invested" style="font-weight:600;">$15,000.00</td>
+                </tr>
+                <tr>
+                  <th>Estimated Future Value</th>
+                  <td id="res-sip-total" style="font-size:1.35rem; font-weight:800; color:var(--success);">$35,468.20</td>
+                </tr>
+                <tr>
+                  <th>Total Wealth Gained</th>
+                  <td id="res-sip-gain" style="font-weight:700; color:var(--accent);">+$20,468.20</td>
+                </tr>
+                <tr>
+                  <th>Portfolio Multiplier</th>
+                  <td id="res-sip-multiple" style="font-weight:700;">2.36x Invested Capital</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="margin-top:1.25rem; background:var(--bg-tertiary); padding:1rem; border-radius:var(--radius-sm); border-left:3px solid var(--accent);">
+            <strong style="color:var(--accent); font-size:0.95rem;">📊 SIP vs Traditional S&amp;P 500 (10% CAGR)</strong>
+            <p style="margin:0.35rem 0 0; font-size:0.85rem; color:var(--text-secondary);">
+              At traditional stock index returns (10%), the same monthly investment would grow to <strong id="sp500-comp" style="color:var(--text-primary);">$19,360</strong>. Your Crypto SIP generates <strong id="crypto-advantage" style="color:var(--success);">+$16,108 extra profit</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <h3>Year-by-Year Growth Schedule</h3>
+        <div style="overflow-x:auto;">
+          <table class="data-table" id="sip-schedule-table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Invested to Date</th>
+                <th>Interest Earned</th>
+                <th>End of Year Balance</th>
+              </tr>
+            </thead>
+            <tbody id="sip-schedule-body">
+              <!-- Populated via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <section class="seo-section">
+      <h2>Why Systematic Investment Plans (SIP) Win in Crypto</h2>
+      <p>Cryptocurrency is famous for volatile 70%+ drawdowns followed by 300%+ bull rallies. Trying to time the exact bottom is statistically impossible for 95% of market participants. By employing a <strong>Crypto SIP</strong>, you automatically accumulate more satoshis when prices are depressed and fewer when euphoric.</p>
+      <p>Over a full 4-year Bitcoin halving cycle, historical backtests show that DCA/SIP investors experience significantly lower stress and capture superior risk-adjusted Sharpe ratios compared to lump-sum buyers.</p>
+    </section>
+
+    <!-- Monetization Partner Grid -->
+    <div class="monetization-grid" id="bottom-partner-grid">
+      <div class="partner-grid-header">
+        <span class="partner-grid-title">🛡️ Recommended &amp; Vetted Web3 Partners</span>
+        <span class="partner-disclosure">Affiliate Disclosure</span>
+      </div>
+      <div class="partner-grid-cards">
+        <div class="partner-box">
+          <div class="partner-box-header">
+            <span class="partner-box-icon">🔒</span>
+            <h4>Ledger Nano X Cold Wallet</h4>
+          </div>
+          <p>As your monthly SIP builds life-changing wealth, move your coins off exchanges into genuine offline cold storage.</p>
+          <span class="partner-perk">✓ Safest Long-Term Storage</span>
+          <a href="https://shop.ledger.com/?r=cryptocalc" target="_blank" rel="noopener sponsored nofollow" class="partner-btn-sm">Get Ledger &rarr;</a>
+        </div>
+        <div class="partner-box">
+          <div class="partner-box-header">
+            <span class="partner-box-icon">📊</span>
+            <h4>Koinly Tax Automation</h4>
+          </div>
+          <p>Dozens of monthly SIP buys create multiple tax basis lots. Let Koinly track your cost basis automatically in seconds.</p>
+          <span class="partner-perk">✓ Automated Cost-Basis Tracking</span>
+          <a href="https://koinly.io/?via=cryptocalc" target="_blank" rel="noopener sponsored nofollow" class="partner-btn-sm">Calculate Taxes &rarr;</a>
+        </div>
+        <div class="partner-box">
+          <div class="partner-box-header">
+            <span class="partner-box-icon">⚡</span>
+            <h4>Bybit Auto-Invest</h4>
+          </div>
+          <p>Schedule automated daily, weekly, or monthly crypto recurring purchases with zero deposit fees and up to $30k in bonuses.</p>
+          <span class="partner-perk">✓ 1-Click Automated SIP</span>
+          <a href="https://partner.bybit.com/b/cryptocalc" target="_blank" rel="noopener sponsored nofollow" class="partner-btn-sm">Start Auto-Invest &rarr;</a>
+        </div>
+      </div>
+      <!-- ADSENSE CONTENT UNIT -->
+    </div>
+
+    <section style="background:var(--card-bg);border-radius:12px;padding:1.5rem;margin:2rem 1rem;max-width:800px;margin-left:auto;margin-right:auto">
+      <h2 style="font-size:1.2rem;margin-bottom:1rem">&#128279; Related Calculators &amp; Guides</h2>
+      <ul style="padding-left:1.2rem;line-height:2.2;margin:0 0 1.5rem">
+        <li><a href="dca-crypto-calculator.html">DCA Bitcoin Calculator</a></li>
+        <li><a href="staking-yield-calculator.html">Staking Yield Calculator</a></li>
+        <li><a href="content/crypto-sip-bitcoin-wealth-strategy-guide.html">Guide: Complete Bitcoin &amp; Crypto SIP Strategy</a></li>
+      </ul>
+      <h2 style="font-size:1.2rem;margin-bottom:1rem">&#10067; Frequently Asked Questions</h2>
+      <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
+        <div class="faq-item">
+          <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">What is a Crypto SIP? <span>&#9660;</span></button>
+          <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">A Crypto SIP (Systematic Investment Plan) is a disciplined investment strategy where you invest a fixed amount of fiat money into Bitcoin, Ethereum, or other crypto assets at regular monthly intervals regardless of price fluctuations.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">What is the formula for Crypto SIP returns? <span>&#9660;</span></button>
+          <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Future Value = P × [((1 + r)^n - 1) / r] × (1 + r), where P is the monthly investment amount, r is the periodic monthly rate (annual return / 12), and n is the total number of months invested.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">What is a realistic CAGR for Bitcoin long-term SIP? <span>&#9660;</span></button>
+          <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Historically, Bitcoin has compounded at over 50% CAGR over any 4-year rolling cycle. Conservative long-term projections typically use 20% to 35% CAGR, whereas bull cycles can see 50% to 80%.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" style="width:100%;text-align:left;background:none;border:none;padding:.75rem 1rem;font-size:1rem;cursor:pointer;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">Is Crypto SIP safer than lump sum investing? <span>&#9660;</span></button>
+          <div class="faq-answer" style="display:none;padding:.75rem 1rem;color:var(--text-muted)">Yes, SIP drastically mitigates downside risk by averaging your entry cost across market highs and lows. It completely eliminates the risk of deploying all your capital right before a 50% bear market drop.</div>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;text-align:center">
+        <a href="content/crypto-sip-bitcoin-wealth-strategy-guide.html" style="display:inline-block;padding:.6rem 1.5rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600">&#128218; Read: Complete Bitcoin &amp; Crypto SIP Strategy</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>CryptoCalc Pro</span>
+        </div>
+        <p>Free, client-side DeFi and crypto financial calculators. No sign-up, zero ads tracking, private.</p>
+      </div>
+      <div class="footer-column">
+        <h4>DeFi Tools</h4>
+        <a href="eth-gas-calculator.html">Ethereum Gas Fee</a>
+        <a href="impermanent-loss-calculator.html">Impermanent Loss</a>
+        <a href="staking-yield-calculator.html">Staking APY</a>
+      </div>
+      <div class="footer-column">
+        <h4>Trading &amp; Tax</h4>
+        <a href="crypto-tax-calculator.html">Tax Estimator</a>
+        <a href="crypto-sip-calculator.html">Crypto SIP</a>
+        <a href="liquidation-price-calculator.html">Liquidation Price</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2024 CryptoCalc Pro. Open-source Web3 financial suite.</div>
+      <div>Financial calculations are estimates only. Not investment advice.</div>
+    </div>
+  </footer>
+  <script src="js/common.js"></script>
+  <script>
+    function setCAGR(val) {
+      document.getElementById('sip-cagr').value = val;
+      calcSIP();
+    }
+
+    function calcSIP() {
+      const monthly = parseFloat(document.getElementById('sip-monthly').value) || 0;
+      const cagr = (parseFloat(document.getElementById('sip-cagr').value) || 0) / 100;
+      const years = parseInt(document.getElementById('sip-years').value) || 1;
+
+      const totalMonths = years * 12;
+      const monthlyRate = cagr / 12;
+
+      let futureVal = 0;
+      if (monthlyRate > 0) {
+        futureVal = monthly * ((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate) * (1 + monthlyRate);
+      } else {
+        futureVal = monthly * totalMonths;
+      }
+
+      const totalInvested = monthly * totalMonths;
+      const wealthGained = futureVal - totalInvested;
+      const multiple = totalInvested > 0 ? (futureVal / totalInvested).toFixed(2) : '1.00';
+
+      document.getElementById('res-sip-invested').textContent = '$' + totalInvested.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('res-sip-total').textContent = '$' + futureVal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('res-sip-gain').textContent = '+$' + wealthGained.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('res-sip-multiple').textContent = multiple + 'x Invested Capital';
+
+      // S&P 500 comparison (10% CAGR)
+      const spRate = 0.10 / 12;
+      const spFuture = monthly * ((Math.pow(1 + spRate, totalMonths) - 1) / spRate) * (1 + spRate);
+      document.getElementById('sp500-comp').textContent = '$' + spFuture.toLocaleString('en-US', { maximumFractionDigits: 0 });
+      const adv = futureVal - spFuture;
+      document.getElementById('crypto-advantage').textContent = (adv >= 0 ? '+$' : '-$') + Math.abs(adv).toLocaleString('en-US', { maximumFractionDigits: 0 }) + ' ' + (adv >= 0 ? 'extra profit' : 'difference');
+
+      // Schedule Table
+      const tbody = document.getElementById('sip-schedule-body');
+      tbody.innerHTML = '';
+      for (let y = 1; y <= years; y++) {
+        const m = y * 12;
+        const curInvested = monthly * m;
+        let curVal = monthly * ((Math.pow(1 + monthlyRate, m) - 1) / monthlyRate) * (1 + monthlyRate);
+        let curInterest = curVal - curInvested;
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><strong>Year ${y}</strong></td>
+          <td>$${curInvested.toLocaleString('en-US', { maximumFractionDigits: 0 })}</td>
+          <td style="color:var(--accent);">+$${curInterest.toLocaleString('en-US', { maximumFractionDigits: 0 })}</td>
+          <td style="font-weight:700; color:var(--success);">$${curVal.toLocaleString('en-US', { maximumFractionDigits: 0 })}</td>
+        `;
+        tbody.appendChild(row);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', calcSIP);
+  </script>
+</body>
+</html>

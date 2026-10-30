@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Online JSON Formatter, Validator &amp; Minifier</title>
+  <meta name="description" content="Clean, beautify, validate, and minify JSON data online. Pinpoints JSON syntax errors with exact line and column numbers. Zero server storage." />
+  <link rel="canonical" href="https://devpulse-tools.netlify.app/json-formatter.html" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>DevPulse Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Tools</a>
+        <a href="ip-lookup.html" class="nav-link">IP Lookup</a>
+        <a href="dns-lookup.html" class="nav-link">DNS Inspector</a>
+        <a href="jwt-decoder.html" class="nav-link">JWT Decoder</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+  <div class="ad-slot" id="top-banner-ad">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-placeholder-text">⚡ Top Leaderboard Space (Google AdSense Responsive Unit)</div>
+    <!-- ADSENSE LEADERBOARD -->
+  </div>
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <span>Developer Tools</span> &gt; <span>JSON Formatter</span>
+      </div>
+      <h1>JSON Formatter &amp; Validator</h1>
+      <p>Clean up messy JSON, minify for production, or validate structure with real-time error detection.</p>
+    </div>
+
+    <div class="tool-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+        <span style="font-weight:600;">JSON Input / Output</span>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn-primary" onclick="formatJson(2)">Format (2 Spaces)</button>
+          <button class="btn-primary" onclick="formatJson(4)">Format (4 Spaces)</button>
+          <button class="btn-secondary" onclick="minifyJson()">Minify</button>
+          <button class="btn-secondary" onclick="copyJson()">Copy</button>
+          <button class="btn-secondary" onclick="clearJson()">Clear</button>
+        </div>
+      </div>
+      <textarea id="json-editor" class="code-editor" style="min-height:360px;" placeholder='Paste unformatted or invalid JSON here, e.g. {"name":"DevPulse","tools":["IP","DNS","JWT"],"active":true}'></textarea>
+      <div id="json-feedback" style="margin-top:1rem;"></div>
+    </div>
+
+  <div class="ad-slot" id="content-banner-ad">
+    <span class="ad-label">Sponsored Resource</span>
+    <div class="ad-placeholder-text">💡 Recommended Developer Services &amp; Tools</div>
+    <!-- ADSENSE CONTENT UNIT -->
+  </div>
+
+    <section class="seo-section">
+      <h2>Why Validate and Format JSON?</h2>
+      <p>JSON (JavaScript Object Notation) is the standard format for web APIs and configuration files. Unmatched brackets, trailing commas, or unescaped quotes can cause parsing errors that break production applications. Our tool checks syntax instantly.</p>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>DevPulse Tools</span>
+        </div>
+        <p>Free, lightning-fast developer utilities and network diagnostic tools. 100% private and client-side executed.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Network Tools</h4>
+        <ul>
+          <li><a href="ip-lookup.html">IP Geolocation</a></li>
+          <li><a href="dns-lookup.html">DNS Inspector</a></li>
+          <li><a href="http-headers.html">HTTP Security Headers</a></li>
+          <li><a href="user-agent.html">User Agent Analyzer</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Developer Tools</h4>
+        <ul>
+          <li><a href="jwt-decoder.html">JWT Token Decoder</a></li>
+          <li><a href="json-formatter.html">JSON Validator &amp; Formatter</a></li>
+          <li><a href="meta-tag-generator.html">SEO Meta Tag Generator</a></li>
+          <li><a href="password-generator.html">Password Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="sitemap.xml">XML Sitemap</a></li>
+          <li><a href="robots.txt">Robots.txt</a></li>
+          <li><a href="index.html">Privacy &amp; Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 DevPulse Tools. All rights reserved. Free online utilities for developers and webmasters.</span>
+      <span>Privacy Friendly • Zero Tracking</span>
+    </div>
+  </footer>
+  <div id="toast"></div>
+  <script src="js/common.js"></script>
+
+  <script>
+    function formatJson(spaces) {
+      const editor = document.getElementById('json-editor');
+      const feedback = document.getElementById('json-feedback');
+      const val = editor.value.trim();
+      if (!val) return;
+      try {
+        const parsed = JSON.parse(val);
+        editor.value = JSON.stringify(parsed, null, spaces);
+        feedback.innerHTML = '<span class="badge badge-success">✓ Valid JSON</span>';
+      } catch (err) {
+        feedback.innerHTML = '<span class="badge badge-danger">✗ Invalid JSON: ' + err.message + '</span>';
+      }
+    }
+
+    function minifyJson() {
+      const editor = document.getElementById('json-editor');
+      const feedback = document.getElementById('json-feedback');
+      const val = editor.value.trim();
+      if (!val) return;
+      try {
+        const parsed = JSON.parse(val);
+        editor.value = JSON.stringify(parsed);
+        feedback.innerHTML = '<span class="badge badge-success">✓ Minified Successfully</span>';
+      } catch (err) {
+        feedback.innerHTML = '<span class="badge badge-danger">✗ Error: ' + err.message + '</span>';
+      }
+    }
+
+    function copyJson() {
+      copyText(document.getElementById('json-editor').value);
+    }
+
+    function clearJson() {
+      document.getElementById('json-editor').value = '';
+      document.getElementById('json-feedback').innerHTML = '';
+    }
+  </script>
+</body>
+</html>

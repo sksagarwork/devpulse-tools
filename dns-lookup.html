@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Online DNS Record Inspector – Check A, MX, CNAME, TXT, NS Records</title>
+  <meta name="description" content="Query live DNS records using Google and Cloudflare DNS-over-HTTPS (DoH). Check A, AAAA, MX, TXT, CNAME, NS, SOA records with real-time propagation info." />
+  <link rel="canonical" href="https://devpulse-tools.netlify.app/dns-lookup.html" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>DevPulse Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Tools</a>
+        <a href="ip-lookup.html" class="nav-link">IP Lookup</a>
+        <a href="dns-lookup.html" class="nav-link">DNS Inspector</a>
+        <a href="jwt-decoder.html" class="nav-link">JWT Decoder</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+  <div class="ad-slot" id="top-banner-ad">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-placeholder-text">⚡ Top Leaderboard Space (Google AdSense Responsive Unit)</div>
+    <!-- ADSENSE LEADERBOARD -->
+  </div>
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <span>Network Tools</span> &gt; <span>DNS Record Inspector</span>
+      </div>
+      <h1>DNS Record Inspector</h1>
+      <p>Perform live DNS lookups for any domain across standard record types using DNS-over-HTTPS (DoH).</p>
+    </div>
+
+    <div class="tool-box">
+      <div class="input-row">
+        <input type="text" id="dns-domain" class="input-field" placeholder="Enter domain (e.g., github.com, google.com)..." />
+        <select id="dns-type" class="input-field" style="max-width:140px;">
+          <option value="A">A</option>
+          <option value="AAAA">AAAA</option>
+          <option value="MX">MX</option>
+          <option value="TXT">TXT</option>
+          <option value="CNAME">CNAME</option>
+          <option value="NS">NS</option>
+          <option value="SOA">SOA</option>
+          <option value="CAA">CAA</option>
+        </select>
+        <button class="btn-primary" onclick="lookupDns()">
+          <span>📡</span> Inspect DNS
+        </button>
+      </div>
+
+      <div id="dns-loading" style="display:none; text-align:center; padding:1.5rem; color:var(--text-secondary);">
+        Querying DNS-over-HTTPS resolvers...
+      </div>
+
+      <div id="dns-results" style="display:none;">
+        <div class="result-card">
+          <h3>
+            <span id="dns-results-title">Resolved Records</span>
+            <button class="btn-secondary" onclick="copyDnsData()">Copy Results</button>
+          </h3>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:15%">Record</th>
+                <th style="width:15%">TTL</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody id="dns-table-body">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  <div class="ad-slot" id="content-banner-ad">
+    <span class="ad-label">Sponsored Resource</span>
+    <div class="ad-placeholder-text">💡 Recommended Developer Services &amp; Tools</div>
+    <!-- ADSENSE CONTENT UNIT -->
+  </div>
+
+    <section class="seo-section">
+      <h2>Common DNS Record Types Explained</h2>
+      <ul>
+        <li><strong>A Record:</strong> Maps a domain name to an IPv4 address.</li>
+        <li><strong>AAAA Record:</strong> Maps a domain name to an IPv6 address.</li>
+        <li><strong>MX Record (Mail Exchange):</strong> Directs incoming emails to mail servers for that domain.</li>
+        <li><strong>TXT Record:</strong> Carries arbitrary text used for SPF email authentication, DKIM, and site verification.</li>
+        <li><strong>CNAME (Canonical Name):</strong> Aliases one domain name to another domain.</li>
+        <li><strong>NS (Name Server):</strong> Specifies the authoritative DNS servers for the domain.</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>DevPulse Tools</span>
+        </div>
+        <p>Free, lightning-fast developer utilities and network diagnostic tools. 100% private and client-side executed.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Network Tools</h4>
+        <ul>
+          <li><a href="ip-lookup.html">IP Geolocation</a></li>
+          <li><a href="dns-lookup.html">DNS Inspector</a></li>
+          <li><a href="http-headers.html">HTTP Security Headers</a></li>
+          <li><a href="user-agent.html">User Agent Analyzer</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Developer Tools</h4>
+        <ul>
+          <li><a href="jwt-decoder.html">JWT Token Decoder</a></li>
+          <li><a href="json-formatter.html">JSON Validator &amp; Formatter</a></li>
+          <li><a href="meta-tag-generator.html">SEO Meta Tag Generator</a></li>
+          <li><a href="password-generator.html">Password Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="sitemap.xml">XML Sitemap</a></li>
+          <li><a href="robots.txt">Robots.txt</a></li>
+          <li><a href="index.html">Privacy &amp; Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 DevPulse Tools. All rights reserved. Free online utilities for developers and webmasters.</span>
+      <span>Privacy Friendly • Zero Tracking</span>
+    </div>
+  </footer>
+  <div id="toast"></div>
+  <script src="js/common.js"></script>
+
+  <script>
+    let dnsResultRaw = [];
+
+    async function lookupDns() {
+      const domainInput = document.getElementById('dns-domain').value.trim();
+      const domain = domainInput.replace(/^https?:\/\//, '').split('/')[0];
+      const type = document.getElementById('dns-type').value;
+
+      if (!domain) {
+        showToast('Please enter a valid domain name');
+        return;
+      }
+
+      const loading = document.getElementById('dns-loading');
+      const results = document.getElementById('dns-results');
+      const tbody = document.getElementById('dns-table-body');
+
+      loading.style.display = 'block';
+      results.style.display = 'none';
+      tbody.innerHTML = '';
+
+      try {
+        const res = await fetch('https://dns.google/resolve?name=' + encodeURIComponent(domain) + '&type=' + type);
+        if (!res.ok) throw new Error('DNS query failed');
+        const data = await res.json();
+        dnsResultRaw = data.Answer || [];
+
+        if (dnsResultRaw.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:var(--text-muted);">No ' + type + ' records found for ' + domain + '.</td></tr>';
+        } else {
+          dnsResultRaw.forEach(rec => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = '<td><strong>' + type + '</strong></td><td>' + rec.TTL + 's</td><td>' + rec.data + '</td>';
+            tbody.appendChild(tr);
+          });
+        }
+
+        document.getElementById('dns-results-title').textContent = type + ' Records for ' + domain;
+        loading.style.display = 'none';
+        results.style.display = 'block';
+      } catch (err) {
+        loading.innerHTML = '<span style="color:var(--danger)">Error: ' + err.message + '</span>';
+      }
+    }
+
+    function copyDnsData() {
+      if (!dnsResultRaw.length) return;
+      copyText(JSON.stringify(dnsResultRaw, null, 2));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Online JWT Decoder &amp; Token Inspector – Secure &amp; Client-Side</title>
+  <meta name="description" content="Decode and inspect JSON Web Tokens (JWT) client-side. Parse header, payload claims, expiration countdown, and issued-at dates with zero tracking." />
+  <link rel="canonical" href="https://devpulse-tools.netlify.app/jwt-decoder.html" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>DevPulse Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Tools</a>
+        <a href="ip-lookup.html" class="nav-link">IP Lookup</a>
+        <a href="dns-lookup.html" class="nav-link">DNS Inspector</a>
+        <a href="jwt-decoder.html" class="nav-link">JWT Decoder</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+  <div class="ad-slot" id="top-banner-ad">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-placeholder-text">⚡ Top Leaderboard Space (Google AdSense Responsive Unit)</div>
+    <!-- ADSENSE LEADERBOARD -->
+  </div>
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <span>Developer Tools</span> &gt; <span>JWT Decoder</span>
+      </div>
+      <h1>JSON Web Token (JWT) Decoder</h1>
+      <p>Safely decode, verify timestamps, and inspect payload claims. All decoding is performed 100% in your browser.</p>
+    </div>
+
+    <div class="tool-box">
+      <label style="display:block; margin-bottom:0.5rem; font-weight:600;">Paste Encoded JWT Token:</label>
+      <textarea id="jwt-input" class="code-editor" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE4MDAwMDAwMDB9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"></textarea>
+      <div style="margin-top:1rem; display:flex; gap:0.75rem;">
+        <button class="btn-primary" onclick="decodeJwt()">
+          <span>🔑</span> Decode Token
+        </button>
+        <button class="btn-secondary" onclick="loadSampleJwt()">Load Sample</button>
+        <button class="btn-secondary" onclick="clearJwt()">Clear</button>
+      </div>
+
+      <div id="jwt-status" style="margin-top:1.5rem; display:none;"></div>
+
+      <div id="jwt-output" style="display:none; margin-top:1.5rem;">
+        <div class="result-card">
+          <h3>
+            <span>Header (Algorithm &amp; Type)</span>
+            <button class="btn-secondary" onclick="copyText(document.getElementById('jwt-header').value)">Copy</button>
+          </h3>
+          <textarea id="jwt-header" class="code-editor" style="min-height:120px;" readonly></textarea>
+        </div>
+
+        <div class="result-card">
+          <h3>
+            <span>Payload (Claims &amp; Data)</span>
+            <button class="btn-secondary" onclick="copyText(document.getElementById('jwt-payload').value)">Copy</button>
+          </h3>
+          <textarea id="jwt-payload" class="code-editor" style="min-height:180px;" readonly></textarea>
+        </div>
+      </div>
+    </div>
+
+  <div class="ad-slot" id="content-banner-ad">
+    <span class="ad-label">Sponsored Resource</span>
+    <div class="ad-placeholder-text">💡 Recommended Developer Services &amp; Tools</div>
+    <!-- ADSENSE CONTENT UNIT -->
+  </div>
+
+    <section class="seo-section">
+      <h2>How JSON Web Tokens Work</h2>
+      <p>A JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object.</p>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>DevPulse Tools</span>
+        </div>
+        <p>Free, lightning-fast developer utilities and network diagnostic tools. 100% private and client-side executed.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Network Tools</h4>
+        <ul>
+          <li><a href="ip-lookup.html">IP Geolocation</a></li>
+          <li><a href="dns-lookup.html">DNS Inspector</a></li>
+          <li><a href="http-headers.html">HTTP Security Headers</a></li>
+          <li><a href="user-agent.html">User Agent Analyzer</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Developer Tools</h4>
+        <ul>
+          <li><a href="jwt-decoder.html">JWT Token Decoder</a></li>
+          <li><a href="json-formatter.html">JSON Validator &amp; Formatter</a></li>
+          <li><a href="meta-tag-generator.html">SEO Meta Tag Generator</a></li>
+          <li><a href="password-generator.html">Password Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="sitemap.xml">XML Sitemap</a></li>
+          <li><a href="robots.txt">Robots.txt</a></li>
+          <li><a href="index.html">Privacy &amp; Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 DevPulse Tools. All rights reserved. Free online utilities for developers and webmasters.</span>
+      <span>Privacy Friendly • Zero Tracking</span>
+    </div>
+  </footer>
+  <div id="toast"></div>
+  <script src="js/common.js"></script>
+
+  <script>
+    function parseJwtPart(str) {
+      str = str.replace(/-/g, '+').replace(/_/g, '/');
+      while (str.length % 4) str += '=';
+      return JSON.parse(decodeURIComponent(escape(atob(str))));
+    }
+
+    function decodeJwt() {
+      const raw = document.getElementById('jwt-input').value.trim();
+      const statusDiv = document.getElementById('jwt-status');
+      const outputDiv = document.getElementById('jwt-output');
+
+      if (!raw) {
+        showToast('Please paste a JWT string');
+        return;
+      }
+
+      const parts = raw.split('.');
+      if (parts.length < 2) {
+        statusDiv.style.display = 'block';
+        statusDiv.innerHTML = '<span class="badge badge-danger">Invalid JWT: Must contain at least 2 dot-separated segments.</span>';
+        outputDiv.style.display = 'none';
+        return;
+      }
+
+      try {
+        const header = parseJwtPart(parts[0]);
+        const payload = parseJwtPart(parts[1]);
+
+        document.getElementById('jwt-header').value = JSON.stringify(header, null, 2);
+        document.getElementById('jwt-payload').value = JSON.stringify(payload, null, 2);
+
+        let statusHtml = '';
+        if (payload.exp) {
+          const expDate = new Date(payload.exp * 1000);
+          const now = new Date();
+          if (now > expDate) {
+            statusHtml = '<span class="badge badge-danger">Token Expired on ' + expDate.toUTCString() + '</span>';
+          } else {
+            statusHtml = '<span class="badge badge-success">Valid Token (Expires on ' + expDate.toUTCString() + ')</span>';
+          }
+        } else {
+          statusHtml = '<span class="badge badge-warning">No Expiration Claim (exp) Found</span>';
+        }
+
+        statusDiv.innerHTML = statusHtml;
+        statusDiv.style.display = 'block';
+        outputDiv.style.display = 'block';
+      } catch (err) {
+        statusDiv.innerHTML = '<span class="badge badge-danger">Decoding Error: ' + err.message + '</span>';
+        statusDiv.style.display = 'block';
+        outputDiv.style.display = 'none';
+      }
+    }
+
+    function loadSampleJwt() {
+      document.getElementById('jwt-input').value = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFsZXggRGV2Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE4OTM0NTYwMDB9.4PclnEIjXkwd4qR4K7e_Nq_78_w827h92XN_sample';
+      decodeJwt();
+    }
+
+    function clearJwt() {
+      document.getElementById('jwt-input').value = '';
+      document.getElementById('jwt-status').style.display = 'none';
+      document.getElementById('jwt-output').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

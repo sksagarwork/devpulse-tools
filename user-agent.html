@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is My User-Agent? – Browser &amp; Hardware Diagnostics</title>
+  <meta name="description" content="View your exact browser User-Agent string, OS details, screen resolution, GPU renderer, color depth, and client capabilities." />
+  <link rel="canonical" href="https://devpulse-tools.netlify.app/user-agent.html" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>DevPulse Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Tools</a>
+        <a href="ip-lookup.html" class="nav-link">IP Lookup</a>
+        <a href="dns-lookup.html" class="nav-link">DNS Inspector</a>
+        <a href="jwt-decoder.html" class="nav-link">JWT Decoder</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+  <div class="ad-slot" id="top-banner-ad">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-placeholder-text">⚡ Top Leaderboard Space (Google AdSense Responsive Unit)</div>
+    <!-- ADSENSE LEADERBOARD -->
+  </div>
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <span>Diagnostics</span> &gt; <span>User-Agent Analyzer</span>
+      </div>
+      <h1>User-Agent &amp; Device Analyzer</h1>
+      <p>Inspect your browser fingerprint, device resolution, and hardware capabilities in real time.</p>
+    </div>
+
+    <div class="tool-box">
+      <div class="result-card">
+        <h3>
+          <span>Your User-Agent String</span>
+          <button class="btn-secondary" onclick="copyText(document.getElementById('ua-string').textContent)">Copy String</button>
+        </h3>
+        <p id="ua-string" style="font-family:var(--font-mono); background:var(--bg-secondary); padding:1rem; border-radius:var(--radius-sm); border:1px solid var(--border); word-break:break-all;"></p>
+      </div>
+
+      <div class="result-card" style="margin-top:1.5rem;">
+        <h3>Client Device &amp; Hardware Profile</h3>
+        <table class="data-table">
+          <tbody>
+            <tr><th>Operating System</th><td id="ua-os">-</td></tr>
+            <tr><th>Browser Engine</th><td id="ua-browser">-</td></tr>
+            <tr><th>Screen Resolution</th><td id="ua-screen">-</td></tr>
+            <tr><th>Viewport Size</th><td id="ua-viewport">-</td></tr>
+            <tr><th>Device Pixel Ratio</th><td id="ua-dpr">-</td></tr>
+            <tr><th>Color Depth</th><td id="ua-depth">-</td></tr>
+            <tr><th>GPU / WebGL Renderer</th><td id="ua-gpu">-</td></tr>
+            <tr><th>Language</th><td id="ua-lang">-</td></tr>
+            <tr><th>Touch Support</th><td id="ua-touch">-</td></tr>
+            <tr><th>Do Not Track (DNT)</th><td id="ua-dnt">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  <div class="ad-slot" id="content-banner-ad">
+    <span class="ad-label">Sponsored Resource</span>
+    <div class="ad-placeholder-text">💡 Recommended Developer Services &amp; Tools</div>
+    <!-- ADSENSE CONTENT UNIT -->
+  </div>
+
+    <section class="seo-section">
+      <h2>What is a User-Agent?</h2>
+      <p>A User-Agent is a request header sent by your browser to web servers identifying the software application, version, operating system, and hardware architecture.</p>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>DevPulse Tools</span>
+        </div>
+        <p>Free, lightning-fast developer utilities and network diagnostic tools. 100% private and client-side executed.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Network Tools</h4>
+        <ul>
+          <li><a href="ip-lookup.html">IP Geolocation</a></li>
+          <li><a href="dns-lookup.html">DNS Inspector</a></li>
+          <li><a href="http-headers.html">HTTP Security Headers</a></li>
+          <li><a href="user-agent.html">User Agent Analyzer</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Developer Tools</h4>
+        <ul>
+          <li><a href="jwt-decoder.html">JWT Token Decoder</a></li>
+          <li><a href="json-formatter.html">JSON Validator &amp; Formatter</a></li>
+          <li><a href="meta-tag-generator.html">SEO Meta Tag Generator</a></li>
+          <li><a href="password-generator.html">Password Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="sitemap.xml">XML Sitemap</a></li>
+          <li><a href="robots.txt">Robots.txt</a></li>
+          <li><a href="index.html">Privacy &amp; Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 DevPulse Tools. All rights reserved. Free online utilities for developers and webmasters.</span>
+      <span>Privacy Friendly • Zero Tracking</span>
+    </div>
+  </footer>
+  <div id="toast"></div>
+  <script src="js/common.js"></script>
+
+  <script>
+    function getGpuRenderer() {
+      try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (!gl) return 'Not Supported';
+        const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+        return debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : 'Generic WebGL';
+      } catch (e) {
+        return 'Unavailable';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const ua = navigator.userAgent;
+      document.getElementById('ua-string').textContent = ua;
+
+      document.getElementById('ua-os').textContent = navigator.platform || 'Unknown';
+      document.getElementById('ua-browser').textContent = navigator.appName || 'Unknown';
+      document.getElementById('ua-screen').textContent = window.screen.width + ' x ' + window.screen.height + ' px';
+      document.getElementById('ua-viewport').textContent = window.innerWidth + ' x ' + window.innerHeight + ' px';
+      document.getElementById('ua-dpr').textContent = window.devicePixelRatio + 'x';
+      document.getElementById('ua-depth').textContent = window.screen.colorDepth + '-bit';
+      document.getElementById('ua-gpu').textContent = getGpuRenderer();
+      document.getElementById('ua-lang').textContent = navigator.language || 'en';
+      document.getElementById('ua-touch').textContent = ('ontouchstart' in window || navigator.maxTouchPoints > 0) ? 'Yes' : 'No';
+      document.getElementById('ua-dnt').textContent = navigator.doNotTrack === '1' ? 'Enabled' : 'Not Set';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free SEO &amp; Social Meta Tag Generator – Open Graph &amp; Twitter Card</title>
+  <meta name="description" content="Generate Google Search, Open Graph (Facebook, LinkedIn), and Twitter Card HTML meta tags with instant live card previews." />
+  <link rel="canonical" href="https://devpulse-tools.netlify.app/meta-tag-generator.html" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>DevPulse Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Tools</a>
+        <a href="ip-lookup.html" class="nav-link">IP Lookup</a>
+        <a href="dns-lookup.html" class="nav-link">DNS Inspector</a>
+        <a href="jwt-decoder.html" class="nav-link">JWT Decoder</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+  <div class="ad-slot" id="top-banner-ad">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-placeholder-text">⚡ Top Leaderboard Space (Google AdSense Responsive Unit)</div>
+    <!-- ADSENSE LEADERBOARD -->
+  </div>
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <span>SEO Tools</span> &gt; <span>Meta Tag Generator</span>
+      </div>
+      <h1>SEO &amp; Social Meta Tag Generator</h1>
+      <p>Configure page metadata and visualize how your website will appear when shared on Google, Twitter, and LinkedIn.</p>
+    </div>
+
+    <div class="tool-box">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+        <div>
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Site Title</label>
+          <input type="text" id="meta-title" class="input-field" style="width:100%; margin-bottom:1rem;" value="My Awesome SaaS App – The Ultimate Productivity Tool" oninput="updateMetaPreview()" />
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Description</label>
+          <textarea id="meta-desc" class="input-field" style="width:100%; height:80px; margin-bottom:1rem;" oninput="updateMetaPreview()">Boost your team productivity with automated workflows and smart insights.</textarea>
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">Canonical URL</label>
+          <input type="text" id="meta-url" class="input-field" style="width:100%; margin-bottom:1rem;" value="https://example.com" oninput="updateMetaPreview()" />
+
+          <label style="display:block; margin-bottom:0.35rem; font-weight:600;">OG / Share Image URL</label>
+          <input type="text" id="meta-img" class="input-field" style="width:100%;" value="https://example.com/og-image.jpg" oninput="updateMetaPreview()" />
+        </div>
+
+        <div>
+          <h3 style="margin-bottom:0.75rem;">Google Search Preview</h3>
+          <div style="background:var(--bg-primary); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1rem; margin-bottom:1.5rem;">
+            <div id="prev-search-url" style="color:#10b981; font-size:0.85rem; margin-bottom:0.25rem;">https://example.com</div>
+            <div id="prev-search-title" style="color:#6366f1; font-size:1.15rem; font-weight:600; cursor:pointer; margin-bottom:0.35rem;">My Awesome SaaS App – The Ultimate Productivity Tool</div>
+            <div id="prev-search-desc" style="color:var(--text-secondary); font-size:0.9rem;">Boost your team productivity with automated workflows and smart insights.</div>
+          </div>
+
+          <h3>Generated HTML Meta Code</h3>
+          <textarea id="generated-meta" class="code-editor" style="min-height:180px; margin-top:0.5rem;" readonly></textarea>
+          <button class="btn-primary" style="margin-top:0.75rem;" onclick="copyText(document.getElementById('generated-meta').value)">
+            <span>📋</span> Copy Meta Tags
+          </button>
+        </div>
+      </div>
+    </div>
+
+  <div class="ad-slot" id="content-banner-ad">
+    <span class="ad-label">Sponsored Resource</span>
+    <div class="ad-placeholder-text">💡 Recommended Developer Services &amp; Tools</div>
+    <!-- ADSENSE CONTENT UNIT -->
+  </div>
+
+    <section class="seo-section">
+      <h2>The Importance of Open Graph Tags</h2>
+      <p>Open Graph meta tags, originally introduced by Facebook, allow webmasters to control the thumbnail, title, and summary displayed when links are shared across social messaging platforms.</p>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>DevPulse Tools</span>
+        </div>
+        <p>Free, lightning-fast developer utilities and network diagnostic tools. 100% private and client-side executed.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Network Tools</h4>
+        <ul>
+          <li><a href="ip-lookup.html">IP Geolocation</a></li>
+          <li><a href="dns-lookup.html">DNS Inspector</a></li>
+          <li><a href="http-headers.html">HTTP Security Headers</a></li>
+          <li><a href="user-agent.html">User Agent Analyzer</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Developer Tools</h4>
+        <ul>
+          <li><a href="jwt-decoder.html">JWT Token Decoder</a></li>
+          <li><a href="json-formatter.html">JSON Validator &amp; Formatter</a></li>
+          <li><a href="meta-tag-generator.html">SEO Meta Tag Generator</a></li>
+          <li><a href="password-generator.html">Password Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="sitemap.xml">XML Sitemap</a></li>
+          <li><a href="robots.txt">Robots.txt</a></li>
+          <li><a href="index.html">Privacy &amp; Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 DevPulse Tools. All rights reserved. Free online utilities for developers and webmasters.</span>
+      <span>Privacy Friendly • Zero Tracking</span>
+    </div>
+  </footer>
+  <div id="toast"></div>
+  <script src="js/common.js"></script>
+
+  <script>
+    function updateMetaPreview() {
+      const title = document.getElementById('meta-title').value;
+      const desc = document.getElementById('meta-desc').value;
+      const url = document.getElementById('meta-url').value;
+      const img = document.getElementById('meta-img').value;
+
+      document.getElementById('prev-search-title').textContent = title || 'Page Title';
+      document.getElementById('prev-search-desc').textContent = desc || 'Meta description text...';
+      document.getElementById('prev-search-url').textContent = url || 'https://example.com';
+
+      const code = '<!-- Primary Meta Tags -->\n' +
+'<title>' + title + '</title>\n' +
+'<meta name="title" content="' + title + '">\n' +
+'<meta name="description" content="' + desc + '">\n' +
+'<link rel="canonical" href="' + url + '">\n\n' +
+'<!-- Open Graph / Facebook / LinkedIn -->\n' +
+'<meta property="og:type" content="website">\n' +
+'<meta property="og:url" content="' + url + '">\n' +
+'<meta property="og:title" content="' + title + '">\n' +
+'<meta property="og:description" content="' + desc + '">\n' +
+'<meta property="og:image" content="' + img + '">\n\n' +
+'<!-- Twitter Card -->\n' +
+'<meta name="twitter:card" content="summary_large_image">\n' +
+'<meta name="twitter:url" content="' + url + '">\n' +
+'<meta name="twitter:title" content="' + title + '">\n' +
+'<meta name="twitter:description" content="' + desc + '">\n' +
+'<meta name="twitter:image" content="' + img + '">';
+
+      document.getElementById('generated-meta').value = code;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateMetaPreview();
+    });
+  </script>
+</body>
+</html>

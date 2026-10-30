@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free IP &amp; ASN Geolocation Lookup – Find IP Location &amp; ISP</title>
+  <meta name="description" content="Free IP address lookup tool. Check your public IP or analyze any IPv4/IPv6 address. Get exact city, country, ASN, ISP organization, and map location." />
+  <link rel="canonical" href="https://devpulse-tools.netlify.app/ip-lookup.html" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <span>DevPulse Tools</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">All Tools</a>
+        <a href="ip-lookup.html" class="nav-link">IP Lookup</a>
+        <a href="dns-lookup.html" class="nav-link">DNS Inspector</a>
+        <a href="jwt-decoder.html" class="nav-link">JWT Decoder</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main>
+  <div class="ad-slot" id="top-banner-ad">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-placeholder-text">⚡ Top Leaderboard Space (Google AdSense Responsive Unit)</div>
+    <!-- ADSENSE LEADERBOARD -->
+  </div>
+    <div class="tool-page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <span>Network Tools</span> &gt; <span>IP &amp; ASN Lookup</span>
+      </div>
+      <h1>IP &amp; ASN Geolocation Lookup</h1>
+      <p>Analyze any IPv4 or IPv6 address to determine its geographic location, ISP, network owner, and coordinates.</p>
+    </div>
+
+    <div class="tool-box">
+      <div class="input-row">
+        <input type="text" id="ip-target" class="input-field" placeholder="Enter IP address (leave blank for your own IP)..." />
+        <button class="btn-primary" onclick="performIpLookup()">
+          <span>🔍</span> Lookup IP
+        </button>
+        <button class="btn-secondary" onclick="loadMyIp()">
+          <span>📍</span> My IP
+        </button>
+      </div>
+
+      <div id="ip-loading" style="display:none; text-align:center; padding:1.5rem; color:var(--text-secondary);">
+        Fetching IP geolocation data...
+      </div>
+
+      <div id="ip-results" style="display:none;">
+        <div class="result-card">
+          <h3>
+            <span>Network &amp; Geolocation Data</span>
+            <button class="btn-secondary" onclick="copyAllIpData()">Copy All JSON</button>
+          </h3>
+          <table class="data-table">
+            <tbody>
+              <tr><th>IP Address</th><td id="res-ip">-</td></tr>
+              <tr><th>Hostname / Reverse DNS</th><td id="res-hostname">-</td></tr>
+              <tr><th>City, Region</th><td id="res-location">-</td></tr>
+              <tr><th>Country</th><td id="res-country">-</td></tr>
+              <tr><th>Postal / ZIP Code</th><td id="res-postal">-</td></tr>
+              <tr><th>Coordinates (Lat, Lon)</th><td id="res-coords">-</td></tr>
+              <tr><th>Timezone</th><td id="res-timezone">-</td></tr>
+              <tr><th>ISP / Organization</th><td id="res-org">-</td></tr>
+              <tr><th>ASN (Autonomous System)</th><td id="res-asn">-</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="map-container" style="margin-top:1.5rem; border-radius:var(--radius-sm); overflow:hidden; border:1px solid var(--border); height:320px; background:var(--bg-tertiary);">
+          <iframe id="map-frame" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src=""></iframe>
+        </div>
+      </div>
+    </div>
+
+  <div class="ad-slot" id="content-banner-ad">
+    <span class="ad-label">Sponsored Resource</span>
+    <div class="ad-placeholder-text">💡 Recommended Developer Services &amp; Tools</div>
+    <!-- ADSENSE CONTENT UNIT -->
+  </div>
+
+    <section class="seo-section">
+      <h2>Understanding IP Geolocation &amp; ASN Routing</h2>
+      <p>Every internet-connected device communicates using an assigned Internet Protocol (IP) address. Whether you are managing cloud servers, investigating security incidents, or configuring DNS, knowing the routing details and physical origin of an IP is critical.</p>
+
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How does an IP lookup work?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          An IP lookup queries public IP registry databases (such as ARIN, RIPE, APNIC, LACNIC, and AFRINIC) to map an IP address to its allocated ISP, ASN, and geographical region.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What is an Autonomous System Number (ASN)?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          An ASN is a globally unique number assigned to an autonomous network system (such as an ISP, cloud hosting provider, or telecom carrier) that controls routing for IP address blocks via BGP (Border Gateway Protocol).
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Can an IP address show someone's exact street address?</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer" style="display:none;">
+          No. IP geolocation provides city-level or regional accuracy based on ISP routing centers. It cannot pinpoint a physical house or street address due to privacy and dynamic IP allocation.
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-group">
+          <div class="logo-icon">⚡</div>
+          <span>DevPulse Tools</span>
+        </div>
+        <p>Free, lightning-fast developer utilities and network diagnostic tools. 100% private and client-side executed.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Network Tools</h4>
+        <ul>
+          <li><a href="ip-lookup.html">IP Geolocation</a></li>
+          <li><a href="dns-lookup.html">DNS Inspector</a></li>
+          <li><a href="http-headers.html">HTTP Security Headers</a></li>
+          <li><a href="user-agent.html">User Agent Analyzer</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Developer Tools</h4>
+        <ul>
+          <li><a href="jwt-decoder.html">JWT Token Decoder</a></li>
+          <li><a href="json-formatter.html">JSON Validator &amp; Formatter</a></li>
+          <li><a href="meta-tag-generator.html">SEO Meta Tag Generator</a></li>
+          <li><a href="password-generator.html">Password Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="sitemap.xml">XML Sitemap</a></li>
+          <li><a href="robots.txt">Robots.txt</a></li>
+          <li><a href="index.html">Privacy &amp; Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 DevPulse Tools. All rights reserved. Free online utilities for developers and webmasters.</span>
+      <span>Privacy Friendly • Zero Tracking</span>
+    </div>
+  </footer>
+  <div id="toast"></div>
+  <script src="js/common.js"></script>
+
+  <script>
+    let currentIpData = null;
+
+    async function performIpLookup() {
+      const target = document.getElementById('ip-target').value.trim();
+      const loading = document.getElementById('ip-loading');
+      const results = document.getElementById('ip-results');
+
+      loading.style.display = 'block';
+      results.style.display = 'none';
+
+      try {
+        const url = target ? 'https://ipapi.co/' + target + '/json/' : 'https://ipapi.co/json/';
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Could not fetch IP details');
+        const data = await res.json();
+        currentIpData = data;
+
+        document.getElementById('res-ip').textContent = data.ip || target || 'Unknown';
+        document.getElementById('res-hostname').textContent = data.hostname || 'None / Not Resolved';
+        document.getElementById('res-location').textContent = (data.city || 'Unknown') + ', ' + (data.region || '');
+        document.getElementById('res-country').textContent = (data.country_name || '') + ' (' + (data.country_code || '') + ')';
+        document.getElementById('res-postal').textContent = data.postal || 'N/A';
+        document.getElementById('res-coords').textContent = (data.latitude || 0) + ', ' + (data.longitude || 0);
+        document.getElementById('res-timezone').textContent = data.timezone || 'N/A';
+        document.getElementById('res-org').textContent = data.org || data.asn || 'N/A';
+        document.getElementById('res-asn').textContent = data.asn || 'N/A';
+
+        if (data.latitude && data.longitude) {
+          const lat = data.latitude;
+          const lon = data.longitude;
+          const mapUrl = 'https://www.openstreetmap.org/export/embed.html?bbox=' + (lon-0.08) + '%2C' + (lat-0.05) + '%2C' + (lon+0.08) + '%2C' + (lat+0.05) + '&layer=mapnik&marker=' + lat + '%2C' + lon;
+          document.getElementById('map-frame').src = mapUrl;
+        }
+
+        loading.style.display = 'none';
+        results.style.display = 'block';
+      } catch (err) {
+        loading.innerHTML = '<span style="color:var(--danger)">Error: ' + err.message + '. Please verify the IP address and try again.</span>';
+      }
+    }
+
+    function loadMyIp() {
+      document.getElementById('ip-target').value = '';
+      performIpLookup();
+    }
+
+    function copyAllIpData() {
+      if (!currentIpData) return;
+      copyText(JSON.stringify(currentIpData, null, 2));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadMyIp();
+    });
+  </script>
+</body>
+</html>

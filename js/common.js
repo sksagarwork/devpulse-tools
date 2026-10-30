@@ -213,3 +213,158 @@ function copyCryptoAddress(addr, chain) {
     prompt(`Copy ${chain} address:`, addr);
   });
 }
+
+// PWA Service Worker Registration & Install Prompt
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').then((reg) => {
+      console.log('CryptoCalc Pro ServiceWorker active:', reg.scope);
+    }).catch((err) => {
+      console.warn('ServiceWorker registration notice:', err);
+    });
+  });
+}
+
+let deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  const installBtn = document.getElementById('pwa-install-btn');
+  if (installBtn) {
+    installBtn.style.display = 'inline-flex';
+  }
+});
+
+function triggerPwaInstall() {
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        showToast('🎉 CryptoCalc Pro installed to your device!');
+      }
+      deferredInstallPrompt = null;
+      const installBtn = document.getElementById('pwa-install-btn');
+      if (installBtn) installBtn.style.display = 'none';
+    });
+  } else {
+    showToast('To install: click your browser menu & select "Install App" or "Add to Home Screen"');
+  }
+}
+
+// Global Command Palette (Cmd+K / Ctrl+K)
+const SEARCH_INDEX = [
+  { title: "Ethereum Gas Fee Calculator", desc: "Live Gwei to USD, Uniswap swaps & L2 fees", url: "eth-gas-calculator.html", icon: "⛽" },
+  { title: "Crypto SIP & Compounding", desc: "Monthly Bitcoin DCA returns over 1-10 years", url: "crypto-sip-calculator.html", icon: "📈" },
+  { title: "Uniswap Impermanent Loss", desc: "LP pool fee APR vs simple HODLing", url: "impermanent-loss-calculator.html", icon: "⚖️" },
+  { title: "Crypto Capital Gains Tax", desc: "IRS, HMRC & ATO short/long-term tax estimator", url: "crypto-tax-calculator.html", icon: "📊" },
+  { title: "Staking APY & Yield Calculator", desc: "Daily/weekly compound validator staking returns", url: "staking-yield-calculator.html", icon: "💎" },
+  { title: "DCA Bitcoin Calculator", desc: "Dollar cost averaging backtest & average cost", url: "dca-crypto-calculator.html", icon: "🔄" },
+  { title: "Futures Liquidation Price", desc: "Long and Short liquidation prices 2x-100x", url: "liquidation-price-calculator.html", icon: "⚡" },
+  { title: "Crypto Trading Profit & ROI", desc: "Maker/taker exchange fees and break-even price", url: "crypto-profit-calculator.html", icon: "💰" },
+  { title: "Best Crypto Tax Software Review", desc: "Koinly vs CoinLedger vs CoinTracker 2024", url: "content/best-crypto-tax-software-koinly-review.html", icon: "📑" },
+  { title: "Best Hardware Wallets Review", desc: "Ledger Nano X vs Trezor vs Tangem cold storage", url: "content/best-crypto-hardware-wallets-ledger-vs-trezor.html", icon: "🔒" },
+  { title: "Layer 2 Gas Fees Breakdown", desc: "Arbitrum vs Base vs Optimism fee savings", url: "content/layer-2-gas-fees-arbitrum-optimism-base.html", icon: "🚀" },
+  { title: "Free Embed Widget Builder", desc: "Embed responsive calculators on your website", url: "embed-builder.html", icon: "🧩" }
+];
+
+function initCommandPalette() {
+  let palette = document.getElementById('command-palette');
+  if (!palette) {
+    palette = document.createElement('div');
+    palette.id = 'command-palette';
+    palette.className = 'modal-overlay';
+    palette.innerHTML = `
+      <div class="modal-window" style="max-width:540px; padding:1.25rem;">
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem; border-bottom:1px solid var(--border); padding-bottom:0.75rem;">
+          <span style="font-size:1.2rem;">🔍</span>
+          <input type="text" id="palette-search-input" placeholder="Search calculators, guides, tools... (Esc to close)" style="width:100%; background:none; border:none; color:var(--text-primary); font-size:1.05rem; outline:none;" />
+          <span style="font-size:0.75rem; color:var(--text-muted); background:var(--bg-tertiary); padding:0.2rem 0.5rem; border-radius:4px;">ESC</span>
+        </div>
+        <div id="palette-results" style="max-height:360px; overflow-y:auto; display:flex; flex-direction:column; gap:0.4rem;">
+        </div>
+      </div>
+    `;
+    document.body.appendChild(palette);
+    palette.addEventListener('click', (e) => {
+      if (e.target === palette) closeCommandPalette();
+    });
+
+    const input = document.getElementById('palette-search-input');
+    input.addEventListener('input', renderPaletteResults);
+  }
+
+  // Keyboard Shortcuts: Ctrl+K / Cmd+K / Esc
+  window.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      toggleCommandPalette();
+    } else if (e.key === 'Escape') {
+      closeCommandPalette();
+    }
+  });
+}
+
+function toggleCommandPalette() {
+  const palette = document.getElementById('command-palette');
+  if (palette && palette.classList.contains('active')) {
+    closeCommandPalette();
+  } else {
+    openCommandPalette();
+  }
+}
+
+function openCommandPalette() {
+  initCommandPalette();
+  const palette = document.getElementById('command-palette');
+  palette.classList.add('active');
+  const input = document.getElementById('palette-search-input');
+  input.value = '';
+  input.focus();
+  renderPaletteResults();
+}
+
+function closeCommandPalette() {
+  const palette = document.getElementById('command-palette');
+  if (palette) palette.classList.remove('active');
+}
+
+function renderPaletteResults() {
+  const query = (document.getElementById('palette-search-input').value || '').toLowerCase().trim();
+  const resultsEl = document.getElementById('palette-results');
+  resultsEl.innerHTML = '';
+
+  const filtered = SEARCH_INDEX.filter(item => {
+    return item.title.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query);
+  });
+
+  if (filtered.length === 0) {
+    resultsEl.innerHTML = '<div style="padding:1.5rem; text-align:center; color:var(--text-muted);">No matching tools found.</div>';
+    return;
+  }
+
+  filtered.forEach(item => {
+    const a = document.createElement('a');
+    // Normalize relative path if we are inside /content/
+    const isSubdir = window.location.pathname.includes('/content/');
+    const targetUrl = isSubdir ? (item.url.startsWith('content/') ? item.url.replace('content/', '') : '../' + item.url) : item.url;
+    
+    a.href = targetUrl;
+    a.style.cssText = 'display:flex; align-items:center; gap:0.75rem; padding:0.65rem 0.85rem; border-radius:8px; text-decoration:none; color:var(--text-primary); transition:background 0.15s;';
+    a.addEventListener('mouseenter', () => a.style.background = 'var(--bg-tertiary)');
+    a.addEventListener('mouseleave', () => a.style.background = 'none)');
+    a.innerHTML = `
+      <span style="font-size:1.4rem;">${item.icon}</span>
+      <div style="flex:1;">
+        <strong style="display:block; font-size:0.95rem;">${item.title}</strong>
+        <span style="font-size:0.8rem; color:var(--text-muted);">${item.desc}</span>
+      </div>
+      <span style="color:var(--text-muted); font-size:0.85rem;">&rarr;</span>
+    `;
+    resultsEl.appendChild(a);
+  });
+}
+
+// Auto init on page load
+window.addEventListener('DOMContentLoaded', () => {
+  initCommandPalette();
+});

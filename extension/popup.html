@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CryptoCalc Pro</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="ext-header">
+    <div class="logo">
+      <span>⚡</span>
+      <strong>CryptoCalc Pro</strong>
+    </div>
+    <a href="https://sksagarwork.github.io/devpulse-tools/" target="_blank" class="full-app-link" title="Open full web app">Full Suite &nearr;</a>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="tab-gas">⛽ Gas Fee</button>
+    <button class="tab-btn" data-tab="tab-il">⚖️ IL Calc</button>
+    <button class="tab-btn" data-tab="tab-profit">💰 Profit</button>
+  </nav>
+
+  <main>
+    <!-- Tab 1: Gas Fee -->
+    <section id="tab-gas" class="tab-pane active">
+      <div class="row">
+        <div>
+          <label>Gas (Gwei)</label>
+          <input type="number" id="gas-gwei" value="20" />
+        </div>
+        <div>
+          <label>ETH Price ($)</label>
+          <input type="number" id="gas-eth" value="2600" />
+        </div>
+      </div>
+      <div class="presets">
+        <button class="preset-btn" onclick="setGwei(12)">Slow (12)</button>
+        <button class="preset-btn" onclick="setGwei(20)">Std (20)</button>
+        <button class="preset-btn" onclick="setGwei(35)">Fast (35)</button>
+      </div>
+      <div class="card">
+        <div class="cost-item">
+          <span>ETH Send (21k)</span>
+          <strong id="cost-transfer">$1.09</strong>
+        </div>
+        <div class="cost-item">
+          <span>ERC-20 Token (65k)</span>
+          <strong id="cost-erc20">$3.38</strong>
+        </div>
+        <div class="cost-item highlight">
+          <span>Uniswap V3 Swap</span>
+          <strong id="cost-swap" style="color:#f59e0b;">$7.80</strong>
+        </div>
+        <div class="l2-box">
+          <span>Layer 2 (Arbitrum/Base):</span>
+          <strong style="color:#10b981;">&lt;$0.02 (99.7% off)</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 2: Impermanent Loss -->
+    <section id="tab-il" class="tab-pane">
+      <div class="row">
+        <div>
+          <label>Deposit ($)</label>
+          <input type="number" id="il-deposit" value="1000" />
+        </div>
+        <div>
+          <label>Price Change (%)</label>
+          <input type="number" id="il-ratio" value="100" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="cost-item">
+          <span>Impermanent Loss</span>
+          <strong id="res-il-pct" style="color:#ef4444;">-5.72%</strong>
+        </div>
+        <div class="cost-item">
+          <span>Loss in USD</span>
+          <strong id="res-il-usd" style="color:#ef4444;">-$85.79</strong>
+        </div>
+        <div class="cost-item">
+          <span>Value in Pool</span>
+          <strong id="res-pool-val">$1,414.21</strong>
+        </div>
+        <div class="cost-item">
+          <span>Value if HODLing</span>
+          <strong id="res-hodl-val">$1,500.00</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 3: Profit & Fees -->
+    <section id="tab-profit" class="tab-pane">
+      <div class="row">
+        <div>
+          <label>Buy Price ($)</label>
+          <input type="number" id="p-buy" value="2400" />
+        </div>
+        <div>
+          <label>Sell Price ($)</label>
+          <input type="number" id="p-sell" value="2800" />
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>Quantity</label>
+          <input type="number" id="p-qty" value="1" />
+        </div>
+        <div>
+          <label>Fee Rate (%)</label>
+          <input type="number" id="p-fee" value="0.1" />
+        </div>
+      </div>
+      <div class="card">
+        <div class="cost-item highlight">
+          <span>Net Profit</span>
+          <strong id="res-p-net" style="color:#10b981;">+$394.80</strong>
+        </div>
+        <div class="cost-item">
+          <span>ROI %</span>
+          <strong id="res-p-roi" style="color:#3b82f6;">+16.45%</strong>
+        </div>
+        <div class="cost-item">
+          <span>Total Fees Paid</span>
+          <strong id="res-p-fees" style="color:#94a3b8;">$5.20</strong>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ext-footer">
+    <span>100% Client-Side &bull; Open Source</span>
+    <a href="https://sksagarwork.github.io/devpulse-tools/" target="_blank">Web Suite &rarr;</a>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

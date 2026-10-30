@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "CryptoCalc Pro: DeFi & Gas Fee Suite",
+  "version": "1.0.0",
+  "description": "Instant Ethereum Gas Fee, Impermanent Loss & Crypto Profit Calculator right in your browser toolbar.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

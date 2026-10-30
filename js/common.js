@@ -204,3 +204,12 @@ window.addEventListener('DOMContentLoaded', () => {
   restoreUrlParams();
   checkEmbedMode();
 });
+
+// Crypto Tip Jar & Direct Community Support
+function copyCryptoAddress(addr, chain) {
+  navigator.clipboard.writeText(addr).then(() => {
+    showToast(`✅ Copied ${chain} tip address to clipboard! Thank you for supporting free Web3 tools!`);
+  }).catch(() => {
+    prompt(`Copy ${chain} address:`, addr);
+  });
+}

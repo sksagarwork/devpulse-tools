@@ -25,12 +25,10 @@ def get_urls():
 
 def main():
     urls = get_urls()
-    print(f"Loaded {len(urls)} URLs from sitemap:")
-    for u in urls:
-        print(f" - {u}")
+    print(f"Loaded {len(urls)} URLs from sitemap.")
 
     host = "sksagarwork.github.io"
-    key = "7b82f6e910b9818b5cf60f172a3b" # Generated IndexNow Key
+    key = "7b82f6e910b9818b5cf60f172a3b"
     key_location = f"https://{host}/devpulse-tools/{key}.txt"
 
     payload = {
@@ -40,14 +38,23 @@ def main():
         "urlList": urls
     }
 
-    # Also create the verification key file in the repo root
+    # Ensure key file exists
     key_path = os.path.join(BASE_DIR, f"{key}.txt")
     with open(key_path, "w") as f:
         f.write(key)
-    print(f"Wrote IndexNow verification key to {key}.txt")
 
-    print("\nPayload ready for IndexNow submission to https://api.indexnow.org/indexnow")
-    print(json.dumps(payload, indent=2))
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        "https://api.indexnow.org/indexnow",
+        data=data,
+        headers={"Content-Type": "application/json; charset=utf-8"}
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            print(f"IndexNow API Response: HTTP {resp.status}")
+    except Exception as e:
+        print(f"IndexNow submission notice: {e}")
 
 if __name__ == "__main__":
     main()

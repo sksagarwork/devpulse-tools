@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
 
 Sitemap: https://sksagarwork.github.io/devpulse-tools/sitemap.xml
